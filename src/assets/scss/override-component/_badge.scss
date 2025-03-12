@@ -1,0 +1,10 @@
+@use '@angular/material' as mat;
+
+@mixin custom-badge-theme() {
+  .mat-badge {
+    @include mat.badge-theme((
+      background: var(--mat-sys-primary),
+      text-color: var(--mat-sys-on-primary)
+    ));
+  }
+}

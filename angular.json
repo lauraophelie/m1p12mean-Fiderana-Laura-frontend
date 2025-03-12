@@ -17,6 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "allowedCommonJsDependencies": ["apexcharts", "bezier-easing"],
             "outputPath": "dist/m1p12mean-fiderana-laura-frontend",
             "index": "src/index.html",
             "browser": "src/main.ts",
@@ -30,9 +31,12 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/assets/scss/style.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/@iconify/iconify/dist/iconify.min.js"
+            ]
           },
           "configurations": {
             "production": {
