@@ -19,10 +19,6 @@ export class MarqueService {
     return this.http.get(this.apiUrl);
   }
 
-  // getMarquesPages(page: number, limit: number): Observable<any> {
-  //   const url = `${}
-  // }
-
   addMarque(marque: Marque): Observable<any> {
     return this.http.post(this.apiUrl, marque);
   }
