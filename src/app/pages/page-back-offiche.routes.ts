@@ -1,5 +1,6 @@
 import { Routes } from "@angular/router";
 import { MarqueVoitureComponent } from "./back-office/marque-voiture/marque-voiture.component";
+import { ModeleVoitureComponent } from "./back-office/modele-voiture/modele-voiture.component";
 
 export const PagesBackOfficeRoutes: Routes = [
   {
@@ -8,7 +9,17 @@ export const PagesBackOfficeRoutes: Routes = [
     data: {
       title: 'Marque',
       urls: [
-        { title: 'Marque', url: '/marques'}
+        { title: 'Marque', url: '/marques' }
+      ]
+    }
+  },
+  {
+    path: 'modele',
+    component: ModeleVoitureComponent,
+    data: {
+      title: 'Modele',
+      urls: [
+        { title: 'Modeles', url: '/modeles' }
       ]
     }
   }
