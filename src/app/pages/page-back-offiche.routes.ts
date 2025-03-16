@@ -2,6 +2,7 @@ import { Routes } from "@angular/router";
 import { MarqueVoitureComponent } from "./back-office/marque-voiture/marque-voiture.component";
 import { ModeleVoitureComponent } from "./back-office/modele-voiture/modele-voiture.component";
 import { ServicesAjoutComponent } from './back-office/services-ajout/services-ajout.component';
+import { ServicesListeComponent } from "./back-office/services-liste/services-liste.component";
 
 export const PagesBackOfficeRoutes: Routes = [
   {
@@ -34,6 +35,16 @@ export const PagesBackOfficeServicesRoutes: Routes = [
       title: 'Services',
       urls: [
         { title: 'Services', url: '/services/ajout' }
+      ]
+    }
+  },
+  {
+    path: 'liste',
+    component: ServicesListeComponent,
+    data: {
+      title: 'Services',
+      urls: [
+        { title: 'Services', url: '/services/liste' }
       ]
     }
   }

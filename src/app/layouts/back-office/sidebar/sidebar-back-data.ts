@@ -5,6 +5,11 @@ export const navItems: NavItem[] = [
     navCap: 'Home',
   },
   {
+    displayName: 'Services',
+    iconName: 'solar:bookmark-square-minimalistic-line-duotone',
+    route: '/back/service/liste'
+  },
+  {
     navCap: 'Paramétrages',
     divider: true
   },

@@ -21,6 +21,10 @@ export class ServicesGarageService {
     return this.http.get(this.apiUrl);
   }
 
+  getServicesPages(page: string | number, limit: string | number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/paginate?page=${page}&limit=${limit}`);
+  }
+
   addService(service: ServiceGarage): Observable<any> {
     return this.http.post(this.apiUrl, service);
   }
