@@ -1,12 +1,18 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MaterialModule } from '../../../material.module';
 import { ServiceGarage, ServicesGarageService } from '../../../services/services-garage/services-garage.service';
+import { MatPaginator } from '@angular/material/paginator';
+import { Router } from '@angular/router';
+import { TablerIconsModule } from 'angular-tabler-icons';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-services-liste',
   standalone: true,
   imports: [
-    MaterialModule
+    MaterialModule,
+    TablerIconsModule,
+    MatTooltipModule
   ],
   templateUrl: './services-liste.component.html',
   styleUrl: './services-liste.component.scss',
@@ -18,7 +24,10 @@ export class ServicesListeComponent implements OnInit {
   itemsPerPage = 10;
   totalItems = 0;
 
-  constructor(private readonly serviceGarageService: ServicesGarageService) {}
+  displayedColumns: string[] = ['nomService', 'descriptionService', 'actions'];
+  detailsIcon = "solar:minimalistic-magnifer-zoom-in-outline"
+
+  constructor(private readonly serviceGarageService: ServicesGarageService, private readonly router: Router) {}
 
   ngOnInit(): void {
     this.loadServices();
@@ -30,6 +39,10 @@ export class ServicesListeComponent implements OnInit {
       this.totalItems = response.totalItems;
     });
   };
+
+  goToAddPage(): void {
+    this.router.navigate(['/back/service']);
+  }
 
   nextPage(): void {
     if(this.currentPage < Math.ceil(this.totalItems / this.itemsPerPage)) {

@@ -24,8 +24,15 @@ export class ServicesGarageService {
   getServicesPages(page: string | number, limit: string | number): Observable<any> {
     return this.http.get(`${this.apiUrl}/paginate?page=${page}&limit=${limit}`);
   }
-
   addService(service: ServiceGarage): Observable<any> {
     return this.http.post(this.apiUrl, service);
+  }
+
+  getDetailsService(serviceId: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${serviceId}`);
+  }
+
+  getPrestationsService(serviceId: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/prestations/${serviceId}`);
   }
 }
