@@ -42,8 +42,6 @@ export class ModeleListeComponent implements OnInit {
   }
 
   addModele(): void {
-    console.log("add modele");
-    console.log(this.newModele);
     if(this.newModele.designationModele && this.newModele.marqueId) {
       this.modeleService.addModele(this.newModele).subscribe(() => {
         this.newModele = { designationModele: '', marqueId: '' };

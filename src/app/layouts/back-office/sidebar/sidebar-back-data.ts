@@ -17,5 +17,10 @@ export const navItems: NavItem[] = [
     displayName: 'Modèle de voiture',
     iconName: 'solar:archive-minimalistic-line-duotone',
     route: '/back/marque/modele',
+  },
+  {
+    displayName: 'Ajout de service',
+    iconName: 'solar:archive-minimalistic-line-duotone',
+    route: '/back/service'
   }
 ];
