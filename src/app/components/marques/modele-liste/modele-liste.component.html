@@ -16,8 +16,8 @@
         <div class="col-lg-12">
           <mat-label class="f-w-600 m-b-8 d-block">Marque</mat-label>
           <mat-form-field appearance="outline" class="w-100">
-            <mat-select placeholder="Choisir une marque parmi la liste">
-              @for(option of marques; track option._id) {
+            <mat-select placeholder="Choisir une marque parmi la liste" name="marqueId" id="marqueId" [(ngModel)]="newModele.marqueId">
+              @for(option of marques; track option) {
                 <mat-option [value]="option._id">
                   {{ option.designationMarque }}
                 </mat-option>
