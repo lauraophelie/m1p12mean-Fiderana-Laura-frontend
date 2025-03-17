@@ -5,6 +5,7 @@ import { ServicesAjoutComponent } from './back-office/services-ajout/services-aj
 import { ServicesListeComponent } from "./back-office/services-liste/services-liste.component";
 import { ServicesDetailsComponent } from "./back-office/services-details/services-details.component";
 import { PrestationsAddFormComponent } from "./back-office/prestations-add-form/prestations-add-form.component";
+import { PrestationsMarquesAddComponent } from "../components/prestations-marques-add/prestations-marques-add.component";
 
 export const PagesBackOfficeRoutes: Routes = [
   {
@@ -60,5 +61,9 @@ export const PagesBackOfficePrestationsRoutes: Routes = [
   {
     path: '',
     component: PrestationsAddFormComponent
+  },
+  {
+    path: 'prestationMarque',
+    component: PrestationsMarquesAddComponent
   }
 ];

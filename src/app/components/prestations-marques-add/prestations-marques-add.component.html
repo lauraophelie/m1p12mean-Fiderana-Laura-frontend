@@ -1,1 +1,57 @@
-<p>prestations-marques-add works!</p>
+<mat-card class="cardWithShadow theme-card">
+  <mat-card-header>
+    <mat-card-title class="m-b-0">Insertion de prestation par marque</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content class="b-t-1">
+    <form action="">
+      <div class="row">
+        <div class="col-lg-3">
+          <mat-label class="f-w-600 m-b-8 d-block">Prestation</mat-label>
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-select placeholder="Choisir dans la liste">
+              @for(option of prestations; track option) {
+                <mat-option [value]="option._id">
+                  {{ option.nomPrestation }}
+                </mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-3">
+          <mat-label class="f-w-600 m-b-8 d-block">Marque</mat-label>
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-select placeholder="Choisir dans la liste">
+              @for(option of marques; track option) {
+                <mat-option [value]="option._id">
+                  {{ option.designationMarque }}
+                </mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-3">
+          <mat-label class="f-w-600 m-b-8 d-block">Tarif (en Ar)</mat-label>
+          <mat-form-field appearance="outline" class="w-100">
+            <input type="text" matInput placeholder="Entrez une valeur" id="tarif" name="tarif" min="0" required/>
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-2">
+          <mat-label class="f-w-600 m-b-8 d-block">Durée (en min)</mat-label>
+          <mat-form-field appearance="outline" class="w-100">
+            <input type="number" matInput placeholder="Valeur" id="dureeEstimee" name="dureeEstimee" min="0" required />
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-2">
+          <button mat-flat-button color="primary">Ajouter</button>
+        </div>
+      </div>
+
+      <div class="row"></div>
+    </form>
+  </mat-card-content>
+</mat-card>

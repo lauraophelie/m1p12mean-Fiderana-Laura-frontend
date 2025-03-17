@@ -1,27 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import { PrestationMarque } from '../../services/prestations-marques/prestations-marques.service';
+import { PrestationMarque, PrestationsMarquesService } from '../../services/prestations-marques/prestations-marques.service';
 import { Prestation, PrestationsService } from '../../services/prestations/prestations.service';
 import { Marque, MarqueService } from '../../services/marques/marque.service';
 import { forkJoin } from 'rxjs';
+import { MaterialModule } from '../../material.module';
 
 @Component({
   selector: 'app-prestations-marques-add',
   standalone: true,
-  imports: [],
+  imports: [
+    MaterialModule
+  ],
   templateUrl: './prestations-marques-add.component.html',
   styleUrl: './prestations-marques-add.component.scss'
 })
 export class PrestationsMarquesAddComponent implements OnInit {
-  newPrestationMarque: PrestationMarque = {
-    prestationId: '',
-    marqueId: '',
-    tarif: 0,
-    dureeEstimee: 0
-  };
+  newPrestationMarque: PrestationMarque[] = []
   prestations: Prestation[] = [];
   marques: Marque[] = [];
 
-  constructor(private readonly prestationService: PrestationsService, private readonly marqueService: MarqueService) {}
+  constructor(
+    private readonly prestationService: PrestationsService,
+    private readonly marqueService: MarqueService,
+    private readonly prestationMarqueService: PrestationsMarquesService
+  ) {}
 
   ngOnInit(): void {
     this.loadListePrestationsEtMarques();
@@ -39,5 +41,11 @@ export class PrestationsMarquesAddComponent implements OnInit {
     });
   };
 
-  
+  addPrestationMarque(): void {
+    if(this.newPrestationMarque.length > 0) {
+      this.prestationMarqueService.addPrestationMarques(this.newPrestationMarque).subscribe(() => {
+        this.newPrestationMarque = [];
+      });
+    }
+  }
 }
