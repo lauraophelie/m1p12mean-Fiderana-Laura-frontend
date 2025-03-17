@@ -44,6 +44,10 @@ export class ServicesListeComponent implements OnInit {
     this.router.navigate(['/back/service']);
   }
 
+  goToDetails(serviceId: string): void {
+    this.router.navigate([`/back/service/liste/${serviceId}`]);
+  }
+
   nextPage(): void {
     if(this.currentPage < Math.ceil(this.totalItems / this.itemsPerPage)) {
       this.currentPage++;

@@ -3,6 +3,7 @@ import { MarqueVoitureComponent } from "./back-office/marque-voiture/marque-voit
 import { ModeleVoitureComponent } from "./back-office/modele-voiture/modele-voiture.component";
 import { ServicesAjoutComponent } from './back-office/services-ajout/services-ajout.component';
 import { ServicesListeComponent } from "./back-office/services-liste/services-liste.component";
+import { ServicesDetailsComponent } from "./back-office/services-details/services-details.component";
 
 export const PagesBackOfficeRoutes: Routes = [
   {
@@ -47,5 +48,9 @@ export const PagesBackOfficeServicesRoutes: Routes = [
         { title: 'Services', url: '/services/liste' }
       ]
     }
+  },
+  {
+    path: 'liste/:serviceId',
+    component: ServicesDetailsComponent
   }
 ];
