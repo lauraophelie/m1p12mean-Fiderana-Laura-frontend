@@ -27,5 +27,10 @@ export const navItems: NavItem[] = [
     displayName: 'Ajout de service',
     iconName: 'solar:archive-minimalistic-line-duotone',
     route: '/back/service'
+  },
+  {
+    displayName: 'Ajout de prestation',
+    iconName: 'solar:archive-minimalistic-line-duotone',
+    route: '/back/prestation'
   }
 ];
