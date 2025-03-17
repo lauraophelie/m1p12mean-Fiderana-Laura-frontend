@@ -9,6 +9,8 @@ export interface PrestationMarque {
   marqueId: string;
   tarif: number;
   dureeEstimee: number;
+  nomPrestation?: string;
+  nomMarque?: string;
 }
 
 @Injectable({
