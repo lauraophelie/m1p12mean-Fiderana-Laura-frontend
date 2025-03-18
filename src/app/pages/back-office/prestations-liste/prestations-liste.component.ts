@@ -25,7 +25,7 @@ export class PrestationsListeComponent implements OnInit, AfterViewInit {
   totalItems = 0;
 
   displayedColumns: string[] = ['nomPrestation', 'serviceId', 'actions'];
-  dataSource = new MatTableDataSource<any[]>();
+  dataSource = new MatTableDataSource<any>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatTable) table!: MatTable<any>;
@@ -46,9 +46,7 @@ export class PrestationsListeComponent implements OnInit, AfterViewInit {
     this.prestationService.getPrestationsPages(this.currentPage, this.itemsPerPage).subscribe((response: any) => {
       this.prestations = response.data;
       this.totalItems = response.totalItems;
-      this.dataSource = response.data;
-
-      console.log(this.prestations);
+      this.dataSource.data = response.data;
 
       this.paginator.length = this.totalItems;
       this.table.renderRows();

@@ -17,9 +17,9 @@ import { forkJoin } from 'rxjs';
 })
 export class ServicesDetailsComponent implements OnInit {
   detailsService: any = {};
-  listePrestations: any = [];
+  listePrestations: any[] = [];
   countPrestations: number | string = 0;
-  serviceId: any = '';
+  serviceId: string | any = '';
 
   constructor(private readonly servicesGarageService: ServicesGarageService, private readonly route: ActivatedRoute) {}
 
