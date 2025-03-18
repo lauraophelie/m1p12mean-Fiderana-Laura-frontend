@@ -23,7 +23,7 @@ export class PrestationsListeComponent implements OnInit, AfterViewInit {
   itemsPerPage = 10;
   totalItems = 0;
 
-  displayedColumns: string[] = ['nomPrestation', 'actions', 'serviceId'];
+  displayedColumns: string[] = ['nomPrestation', 'serviceId', 'actions'];
   dataSource = new MatTableDataSource<any[]>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -43,6 +43,8 @@ export class PrestationsListeComponent implements OnInit, AfterViewInit {
       this.prestations = response.data;
       this.totalItems = response.totalItems;
       this.dataSource = response.data;
+
+      console.log(this.prestations);
 
       this.paginator.length = this.totalItems;
       this.table.renderRows();
