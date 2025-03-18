@@ -1,0 +1,35 @@
+<mat-card class="cardWithShadow theme-card">
+  <mat-card-header>
+    <mat-card-title class="m-b-0">Insertion de modèle de voiture</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content class="b-t-1">
+    <form (ngSubmit)="addModele()" #modeleForm="ngForm">
+      <div class="row">
+        <div class="col-lg-12">
+          <mat-label class="f-w-600 m-b-8 d-block">Désignation du modèle</mat-label>
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <input matInput placeholder="Ecrivez ici" id="designationModele" name="designationModele" [(ngModel)]="newModele.designationModele" required />
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-12">
+          <mat-label class="f-w-600 m-b-8 d-block">Marque</mat-label>
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-select placeholder="Choisir une marque parmi la liste" name="marqueId" id="marqueId" [(ngModel)]="newModele.marqueId">
+              @for(option of marques; track option) {
+                <mat-option [value]="option._id">
+                  {{ option.designationMarque }}
+                </mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="m-t-12">
+        <button mat-flat-button class="m-r-8" color="primary" type="submit" [disabled]="modeleForm.invalid">Valider</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

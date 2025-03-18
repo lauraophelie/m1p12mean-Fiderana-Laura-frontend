@@ -1,8 +1,30 @@
 import { Routes } from '@angular/router';
 import { BlankComponent } from './layouts/blank/blank.component';
 import { FullComponent } from './layouts/full/full.component';
+import { BackOfficeComponent } from './layouts/back-office/back-office.component';
 
 export const routes: Routes = [
+    {
+      path: 'back',
+      component: BackOfficeComponent,
+      children: [
+        {
+          path: 'marque',
+          loadChildren:
+            () => import('./pages/page-back-offiche.routes').then((m) => m.PagesBackOfficeRoutes)
+        },
+        {
+          path: 'service',
+          loadChildren:
+            () => import('./pages/page-back-offiche.routes').then((m) => m.PagesBackOfficeServicesRoutes)
+        },
+        {
+          path: 'prestation',
+          loadChildren:
+            () => import('./pages/page-back-offiche.routes').then((m) => m.PagesBackOfficePrestationsRoutes)
+        }
+      ]
+    },
     {
         path: '',
         component: FullComponent,

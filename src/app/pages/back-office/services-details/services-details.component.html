@@ -1,0 +1,47 @@
+<mat-card class="cardWithShadow theme-card">
+  <mat-card-header class="m-b-8 m-t-8">
+    <mat-card-title class="m-b-0">
+      {{ detailsService.nomService }}
+    </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content class="b-t-1">
+    <mat-list>
+      <mat-list-item>
+        <span matListItemTitle class="f-s-16 f-w-600">Description du service</span>
+        <span class="p-t-8">
+          @if(detailsService?.descriptionService) {
+            {{ detailsService.descriptionService }}
+          } @else {
+            {{ "Aucune description n'a été fournie" }}
+          }
+        </span>
+      </mat-list-item>
+
+      <mat-divider class="m-b-8 m-t-8"></mat-divider>
+
+      <mat-list-item>
+        <span matListItemTitle class="f-s-16 f-w-600">Prestations</span>
+      </mat-list-item>
+    </mat-list>
+
+    @if(listePrestations) {
+      <mat-card class="b-1 shadow-none" >
+        <mat-card-content>
+          <span>
+              <table>
+                @for(element of listePrestations; track element) {
+                  <tr>
+                    <th>{{ element.nomPrestation }}</th>
+                    <td>{{ element.descriptionPrestation }}</td>
+                  </tr>
+                }
+              </table>
+          </span>
+        </mat-card-content>
+      </mat-card>
+    } @else {
+      <span>Aucune prestation disponible pour ce service</span>
+    }
+  </mat-card-content>
+</mat-card>

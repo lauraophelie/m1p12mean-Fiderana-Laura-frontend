@@ -12,7 +12,11 @@ import { MaterialModule } from '../../../material.module';
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [BrandingComponent, TablerIconsModule, MaterialModule],
+  imports: [
+    BrandingComponent,
+    TablerIconsModule,
+    MaterialModule
+  ],
   templateUrl: './sidebar.component.html',
 })
 export class SidebarComponent implements OnInit {
