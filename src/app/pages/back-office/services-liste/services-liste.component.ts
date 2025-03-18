@@ -42,11 +42,6 @@ export class ServicesListeComponent implements OnInit, AfterViewInit {
   };
 
   ngAfterViewInit(): void {
-    // this.paginator.page.subscribe(() => {
-    //   this.currentPage = this.paginator.pageIndex + 1;
-    //   this.itemsPerPage = this.paginator.pageSize;
-    //   this.loadServices();
-    // });
     this.dataSource.paginator = this.paginator;
   }
 
