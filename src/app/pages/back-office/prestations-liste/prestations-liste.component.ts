@@ -37,10 +37,10 @@ export class PrestationsListeComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
-  }
+  };
   ngOnInit(): void {
     this.loadPrestations();
-  }
+  };
 
   loadPrestations(): void {
     this.prestationService.getPrestationsPages(this.currentPage, this.itemsPerPage).subscribe((response: any) => {
@@ -53,9 +53,17 @@ export class PrestationsListeComponent implements OnInit, AfterViewInit {
       this.paginator.length = this.totalItems;
       this.table.renderRows();
     });
-  }
+  };
 
   goToAddPage(): void {
     this.router.navigate(['/back/prestation']);
+  };
+
+  goToDetailsService(serviceId: string): void {
+    this.router.navigate([`/back/service/liste/${serviceId}`]);
+  };
+
+  goToDetails(prestationId: string): void {
+    this.router.navigate([`/back/prestation/liste/${prestationId}`]);
   }
 }
