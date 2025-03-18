@@ -1,1 +1,22 @@
-<p>prestations-liste works!</p>
+<mat-card class="cardWithShadow theme-card">
+  <mat-card-header class="m-b-8 m-t-8">
+    <div class="col-lg-9">
+      <mat-card-title class="m-b-0">Liste des prestations</mat-card-title>
+    </div>
+  </mat-card-header>
+
+  <mat-card-content class="b-t-1">
+    <div class="row">
+      <div class="col-12">
+        <table mat-table [dataSource]="dataSource">
+          <ng-container matColumnDef="nomPrestation">
+            <th > Nom </th>
+          </ng-container>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 25]" [length]="totalItems" [pageSize]="itemsPerPage" showFirstLastButtons>
+        </mat-paginator>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

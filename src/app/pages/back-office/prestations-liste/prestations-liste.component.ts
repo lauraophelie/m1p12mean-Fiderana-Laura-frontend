@@ -23,7 +23,7 @@ export class PrestationsListeComponent implements OnInit, AfterViewInit {
   itemsPerPage = 10;
   totalItems = 0;
 
-  displayedColumns: string[] = ['nomPrestation', 'actions'];
+  displayedColumns: string[] = ['nomPrestation', 'actions', 'serviceId'];
   dataSource = new MatTableDataSource<any[]>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;

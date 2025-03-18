@@ -12,13 +12,14 @@ export const navItems: NavItem[] = [
   {
     displayName: 'Prestations',
     iconName: 'solar:bookmark-square-minimalistic-line-duotone',
+    route: '/back/prestation/liste'
   },
   {
     navCap: 'Paramétrages',
     divider: true
   },
   {
-    displayName: 'Marques de voiture',
+    displayName: 'Marque de voiture',
     iconName: 'solar:archive-minimalistic-line-duotone',
     route: '/back/marque',
   },
