@@ -22,6 +22,10 @@ export class PrestationsService {
     return this.http.get(this.apiUrl);
   }
 
+  getPrestationsPages(page: string | number, limit: string | number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/paginate?page=${page}&limit=${limit}`);
+  }
+
   getDetailsPrestation(prestationId: string): Observable<any> {
     return this.http.get(`${this.apiUrl}/${prestationId}`);
   }
