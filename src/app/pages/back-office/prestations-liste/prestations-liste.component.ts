@@ -5,6 +5,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { PrestationsService } from '../../../services/prestations/prestations.service';
 import { MatPaginator } from '@angular/material/paginator';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-prestations-liste',
@@ -29,7 +30,10 @@ export class PrestationsListeComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatTable) table!: MatTable<any>;
 
-  constructor(private readonly prestationService: PrestationsService) {}
+  constructor(
+    private readonly prestationService: PrestationsService,
+    private readonly router: Router
+  ) {}
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
@@ -49,5 +53,9 @@ export class PrestationsListeComponent implements OnInit, AfterViewInit {
       this.paginator.length = this.totalItems;
       this.table.renderRows();
     });
+  }
+
+  goToAddPage(): void {
+    this.router.navigate(['/back/prestation']);
   }
 }
