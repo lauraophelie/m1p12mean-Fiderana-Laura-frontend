@@ -35,12 +35,17 @@
               <button mat-icon-button (click)="goToDetails(element._id)">
                 <mat-icon>search</mat-icon>
               </button>
+              <button mat-icon-button (click)="selectPrestation(element._id)">
+                <mat-icon>edit</mat-icon>
+              </button>
             </td>
           </ng-container>
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
+
+        <app-modif-prestations *ngIf="selectedPrestation"> </app-modif-prestations>
 
         <mat-paginator [pageSizeOptions]="[5, 10, 25]" [length]="totalItems" [pageSize]="itemsPerPage" showFirstLastButtons>
         </mat-paginator>

@@ -55,7 +55,7 @@ export class ServicesListeComponent implements OnInit, AfterViewInit {
         serviceId: this.selectedServiceId
       }
     });
-  }
+  };
 
   ngOnInit(): void {
     this.loadServices();

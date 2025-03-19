@@ -3,7 +3,7 @@ import { ServicesGarageService } from '../../services/services-garage/services-g
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../../material.module';
-import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-modif-services',
