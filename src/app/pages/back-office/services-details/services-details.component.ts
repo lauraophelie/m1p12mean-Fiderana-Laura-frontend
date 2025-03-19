@@ -28,7 +28,7 @@ export class ServicesDetailsComponent implements OnInit {
   itemsPerPage = 5;
   totalItems = 0;
 
-  displayedColumns: string[] = ['nomPrestation', 'descriptionPrestation'];
+  displayedColumns: string[] = ['nomPrestation', 'descriptionPrestation', 'actions'];
   dataSource = new MatTableDataSource<any>();
 
   @ViewChild(MatTable) table!: MatTable<any>;
