@@ -5,13 +5,15 @@ import { ActivatedRoute } from '@angular/router';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { forkJoin } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-prestations-details',
   standalone: true,
   imports: [
     MaterialModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    CommonModule
   ],
   templateUrl: './prestations-details.component.html',
   styleUrl: './prestations-details.component.scss'
