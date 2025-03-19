@@ -1,1 +1,32 @@
-<p>modif-services works!</p>
+<h2 mat-dialog-title>Modifier le service </h2>
+
+<mat-divider> </mat-divider>
+
+<mat-dialog-content class="mat-typography">
+  <form (ngSubmit)="updateService()" #serviceForm="ngForm">
+    <div class="row">
+      <div class="col-lg-12">
+        <mat-label class="f-w-600 m-b-8 d-block">Nom du service</mat-label>
+        <mat-form-field appearance="outline" class="w-100" color="primary">
+          <input matInput placeholder="Ecrivez ici" id="nomService" name="nomService" [(ngModel)]="detailsService.nomService" [value]="detailsService.nomService" required />
+        </mat-form-field>
+      </div>
+
+      <div class="col-lg-12">
+        <mat-label class="f-w-600 m-b-8 d-block">Description du service</mat-label>
+        <mat-form-field appearance="outline" class="w-100" color="primary">
+          <textarea matInput placeholder="Entrez une description ici" id="descriptionService" name="descriptionService" [(ngModel)]="detailsService.descriptionService" [value]="detailsService.descriptionService"> </textarea>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-3">
+        <button mat-flat-button class="m-r-8" color="primary" type="submit" [disabled]="serviceForm.invalid" [mat-dialog-close]="true"> Valider </button>
+      </div>
+      <div class="col-lg-2">
+        <button mat-stroked-button [mat-dialog-close]="true"> Annuler </button>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>

@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
   imports: [
     MaterialModule,
     CommonModule
+    
   ],
   templateUrl: './services-details.component.html',
   styleUrl: './services-details.component.scss',

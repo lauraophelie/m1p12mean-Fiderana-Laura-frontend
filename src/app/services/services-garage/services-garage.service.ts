@@ -35,4 +35,8 @@ export class ServicesGarageService {
   getPrestationsService(serviceId: string): Observable<any> {
     return this.http.get(`${this.apiUrl}/prestations/${serviceId}`);
   }
+
+  updateService(serviceId: string, service: ServiceGarage): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${serviceId}`, service);
+  }
 }
