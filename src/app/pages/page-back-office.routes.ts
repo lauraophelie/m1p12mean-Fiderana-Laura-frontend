@@ -6,6 +6,8 @@ import { ServicesListeComponent } from "./back-office/services-liste/services-li
 import { ServicesDetailsComponent } from "./back-office/services-details/services-details.component";
 import { PrestationsAddFormComponent } from "./back-office/prestations-add-form/prestations-add-form.component";
 import { PrestationsMarquesAddComponent } from "../components/prestations-marques-add/prestations-marques-add.component";
+import { PrestationsListeComponent } from "./back-office/prestations-liste/prestations-liste.component";
+import { PrestationsDetailsComponent } from "./back-office/prestations-details/prestations-details.component";
 
 export const PagesBackOfficeRoutes: Routes = [
   {
@@ -65,5 +67,13 @@ export const PagesBackOfficePrestationsRoutes: Routes = [
   {
     path: 'prestationMarque',
     component: PrestationsMarquesAddComponent
+  },
+  {
+    path: 'liste',
+    component: PrestationsListeComponent
+  },
+  {
+    path: 'liste/:prestationId',
+    component: PrestationsDetailsComponent
   }
 ];

@@ -11,17 +11,17 @@ export const routes: Routes = [
         {
           path: 'marque',
           loadChildren:
-            () => import('./pages/page-back-offiche.routes').then((m) => m.PagesBackOfficeRoutes)
+            () => import('./pages/page-back-office.routes').then((m) => m.PagesBackOfficeRoutes)
         },
         {
           path: 'service',
           loadChildren:
-            () => import('./pages/page-back-offiche.routes').then((m) => m.PagesBackOfficeServicesRoutes)
+            () => import('./pages/page-back-office.routes').then((m) => m.PagesBackOfficeServicesRoutes)
         },
         {
           path: 'prestation',
           loadChildren:
-            () => import('./pages/page-back-offiche.routes').then((m) => m.PagesBackOfficePrestationsRoutes)
+            () => import('./pages/page-back-office.routes').then((m) => m.PagesBackOfficePrestationsRoutes)
         }
       ]
     },

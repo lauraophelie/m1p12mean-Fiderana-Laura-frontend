@@ -26,22 +26,45 @@
     </mat-list>
 
     @if(listePrestations) {
-      <mat-card class="b-1 shadow-none" >
-        <mat-card-content>
-          <span>
-              <table>
-                @for(element of listePrestations; track element) {
-                  <tr>
-                    <th>{{ element.nomPrestation }}</th>
-                    <td>{{ element.descriptionPrestation }}</td>
-                  </tr>
-                }
-              </table>
-          </span>
-        </mat-card-content>
-      </mat-card>
+      <div class="p-t-8 col-lg-12">
+        <table mat-table [dataSource]="dataSource">
+          <ng-container matColumnDef="nomPrestation">
+            <th mat-header-cell *matHeaderCellDef> Nom de la prestation </th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.nomPrestation }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="descriptionPrestation">
+            <th mat-header-cell *matHeaderCellDef> Nom de la prestation </th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.descriptionPrestation }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-icon-button color="primary" (click)="goToDetailsPrestation(element._id)">
+                <mat-icon>search</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
     } @else {
       <span>Aucune prestation disponible pour ce service</span>
     }
+
+    <mat-divider class="m-b-8 m-t-8"></mat-divider>
+
+    <mat-list>
+      <mat-list-item>
+        <span class="f-s-14 p-t-8">Service crée le : {{ detailsService.createdAt | date:'medium' }}</span>
+      </mat-list-item>
+    </mat-list>
   </mat-card-content>
 </mat-card>
