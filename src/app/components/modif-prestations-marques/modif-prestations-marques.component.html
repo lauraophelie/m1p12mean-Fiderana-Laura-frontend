@@ -1,1 +1,51 @@
-<p>modif-prestations-marques works!</p>
+<h2 mat-dialog-title>Modification</h2>
+
+<mat-divider> </mat-divider>
+
+<mat-dialog-content class="mat-typography">
+  <form (ngSubmit)="updatePrestationMarque()" #prestationMarqueForm="ngForm">
+    <div class="row">
+      <div class="col-lg-12">
+        <mat-label class="f-w-600 m-b-8 d-block">Prestation</mat-label>
+        <mat-form-field appearance="outline" class="w-100" color="primary">
+          <mat-select [(ngModel)]="details.prestationId._id" name="prestationId" id="prestationId">
+            <mat-option [value]="details.prestationId._id">
+              {{ details.prestationId.nomPrestation }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-lg-12">
+        <mat-label class="f-w-600 m-b-8 d-block">Marque</mat-label>
+        <mat-form-field appearance="outline" class="w-100" color="primary">
+          <mat-select [(ngModel)]="details.marqueId._id" name="marqueId" id="marqueId" required>
+            <mat-option [value]="details.marqueId._id">
+              {{ details.marqueId.designationMarque }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-lg-12">
+        <mat-label class="f-w-600 m-b-8 d-block">Tarif (en Ar)</mat-label>
+        <mat-form-field appearance="outline" class="w-100" color="primary">
+          <input matInput type="text" name="tarif" id="tarif" [(ngModel)]="details.tarif" [value]="details.tarif" required />
+        </mat-form-field>
+      </div>
+      <div class="col-lg-12">
+        <mat-label class="f-w-600 m-b-8 d-block">Durée estimée (en minute)</mat-label>
+        <mat-form-field appearance="outline" class="w-100" color="primary">
+          <input matInput type="number" min="0" name="dureeEstimee" id="dureeEstimee" [(ngModel)]="details.dureeEstimee" [value]="details.dureeEstimee" required />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-3">
+        <button mat-flat-button class="m-r-8" color="primary" type="submit" [disabled]="prestationMarqueForm.invalid" [mat-dialog-close]="true"> Valider </button>
+      </div>
+      <div class="col-lg-2">
+        <button mat-stroked-button [mat-dialog-close]="true"> Annuler </button>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>

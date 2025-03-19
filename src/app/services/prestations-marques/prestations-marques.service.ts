@@ -24,4 +24,12 @@ export class PrestationsMarquesService {
   addPrestationMarques(data: PrestationMarque[]): Observable<any> {
     return this.http.post(this.apiUrl, data);
   }
+
+  getDetailsPrestationMarque(id: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${id}`);
+  }
+
+  updatePrestationMarque(id: string, prestationMarque: PrestationMarque): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${id}`, prestationMarque);
+  }
 }
