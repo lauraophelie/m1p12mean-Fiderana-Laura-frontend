@@ -1,7 +1,7 @@
 import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { MaterialModule } from '../../../material.module';
 import { PrestationsService } from '../../../services/prestations/prestations.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { forkJoin } from 'rxjs';
@@ -36,7 +36,8 @@ export class PrestationsDetailsComponent implements OnInit, AfterViewInit {
   constructor(
     private readonly prestationService: PrestationsService,
     private readonly route: ActivatedRoute,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -53,7 +54,7 @@ export class PrestationsDetailsComponent implements OnInit, AfterViewInit {
     this.currentPage = event.pageIndex + 1;
     this.itemsPerPage = event.pageSize;
     this.loadDetailsPrestation();
-  }
+  };
 
   loadDetailsPrestation(): void {
     forkJoin({
@@ -71,5 +72,9 @@ export class PrestationsDetailsComponent implements OnInit, AfterViewInit {
         this.cdr.detectChanges();
       }
     });
-  }
+  };
+
+  goToDetailsService(serviceId: string): void {
+    this.router.navigate([`/back/service/liste/${serviceId}`]);
+  };
 }

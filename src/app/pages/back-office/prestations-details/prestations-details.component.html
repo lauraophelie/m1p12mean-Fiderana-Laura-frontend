@@ -22,7 +22,7 @@
 
       <mat-list-item>
         <span matListItemTitle class="f-s-16 f-w-600">Service</span>
-        <span class="p-t-8">
+        <span class="p-t-8 link" (click)="goToDetailsService(detailsPrestation.serviceId._id)">
           {{ detailsPrestation.serviceId.nomService }}
         </span>
       </mat-list-item>
