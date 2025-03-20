@@ -37,4 +37,8 @@ export class PrestationsService {
   addPrestation(prestation: Prestation): Observable<any> {
     return this.http.post(this.apiUrl, prestation);
   }
+
+  updatePrestation(prestationId: string, prestation: Prestation): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${prestationId}`, prestation);
+  }
 }

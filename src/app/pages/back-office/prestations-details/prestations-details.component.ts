@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, inject, OnInit, ViewChild } from '@angular/core';
 import { MaterialModule } from '../../../material.module';
 import { PrestationsService } from '../../../services/prestations/prestations.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -6,6 +6,8 @@ import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { forkJoin } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
+import { ModifPrestationsMarquesComponent } from '../../../components/modif-prestations-marques/modif-prestations-marques.component';
 
 @Component({
   selector: 'app-prestations-details',
@@ -13,7 +15,8 @@ import { CommonModule } from '@angular/common';
   imports: [
     MaterialModule,
     MatPaginatorModule,
-    CommonModule
+    CommonModule,
+    ModifPrestationsMarquesComponent
   ],
   templateUrl: './prestations-details.component.html',
   styleUrl: './prestations-details.component.scss'
@@ -27,8 +30,9 @@ export class PrestationsDetailsComponent implements OnInit, AfterViewInit {
   itemsPerPage = 5;
   totalItems = 0;
 
-  displayedColumns: string[] = ['marqueId', 'tarif', 'dureeEstimee'];
+  displayedColumns: string[] = ['marqueId', 'tarif', 'dureeEstimee', 'actions'];
   dataSource = new MatTableDataSource<any>();
+  selectedPrestationMarque: string | null = null;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatTable) table!: MatTable<any>;
@@ -39,6 +43,17 @@ export class PrestationsDetailsComponent implements OnInit, AfterViewInit {
     private cdr: ChangeDetectorRef,
     private router: Router
   ) {}
+
+  readonly popup = inject(MatDialog);
+
+  selectPrestationMarque(id: string): void {
+    this.selectedPrestationMarque = id;
+    this.popup.open(ModifPrestationsMarquesComponent, {
+      data: {
+        id: this.selectedPrestationMarque
+      }
+    })
+  }
 
   ngOnInit(): void {
     this.prestationId = this.route.snapshot.paramMap.get('prestationId');
