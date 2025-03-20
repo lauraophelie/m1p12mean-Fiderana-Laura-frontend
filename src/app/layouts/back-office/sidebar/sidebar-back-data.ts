@@ -3,6 +3,7 @@ import { NavItem } from "../../full/sidebar/nav-item/nav-item";
 export const navItems: NavItem[] = [
   {
     navCap: 'Home',
+    divider: true
   },
   {
     displayName: 'Services',
@@ -42,5 +43,13 @@ export const navItems: NavItem[] = [
     displayName: 'Prestation par marque',
     iconName: 'solar:archive-minimalistic-line-duotone',
     route: '/back/prestation/prestationMarque'
+  },
+  {
+    navCap: 'Employés',
+    divider: true
+  },
+  {
+    displayName: 'Liste des employés',
+    iconName: 'solar:users-group-rounded-bold'
   }
 ];
