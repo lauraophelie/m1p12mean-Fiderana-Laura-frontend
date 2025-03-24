@@ -1,1 +1,69 @@
-<p>pieces-add works!</p>
+<mat-card class="cardWithShadow theme-card">
+  <mat-card-header>
+    <mat-card-title class="m-b-0">Insertion de prestation</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content class="b-t-1">
+    <form (ngSubmit)="addPiece()" #pieceForm="ngForm">
+      <div class="row">
+        <div class="col-lg-12">
+          <mat-label class="f-w-600 m-b-8 d-block">Nom de la pièce</mat-label>
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <input matInput placeholder="Ecrivez ici" id="nomPiece" name="nomPiece" [(ngModel)]="newPiece.nomPiece" required />
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-12">
+          <mat-label class="f-w-600 m-b-8 d-block">Catégorie</mat-label>
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <mat-select placeholder="Choisir une catégorie parmi la liste" name="categorieId" id="categoriId" [(ngModel)]="newPiece.categoriePieceId" required>
+              @for(option of categoriesPieces; track option) {
+                <mat-option [value]="option._id">
+                  {{ option.designationCategoriePiece }}
+                </mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-12">
+          <mat-label class="f-w-600 m-b-8 d-block">Modèle(s) de voiture compatible(s)</mat-label>
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <mat-select placeholder="Choisir une catégorie parmi la liste" name="modeleId" id="modeleId" [(ngModel)]="newPiece.modelesCompatibles" multiple required>
+              @for(option of modelesVoitures; track option) {
+                <mat-option [value]="option._id">
+                  {{ option.designationModele }}
+                </mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-12">
+          <mat-label class="f-w-600 m-b-8 d-block">Référence</mat-label>
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <input matInput placeholder="Ecrivez ici" id="reference" name="reference" [(ngModel)]="newPiece.reference" required />
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-12">
+          <mat-label class="f-w-600 m-b-8 d-block">Seuil d'alerte</mat-label>
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <input matInput placeholder="Ecrivez ici" id="seuilAlerte" name="seuilAlerte" [(ngModel)]="newPiece.seuilAlerte" required />
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-12">
+          <mat-label class="f-w-600 m-b-8 d-block">Prix unitaire</mat-label>
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <input matInput placeholder="Ecrivez ici" id="prixUnitaire" name="prixUnitaire" [(ngModel)]="newPiece.prixUnitaire" required />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="m-t-12">
+        <button mat-flat-button class="m-r-8" color="primary" type="submit" [disabled]="pieceForm.invalid">Valider</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
