@@ -8,17 +8,16 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
 import { TablerIconsModule } from 'angular-tabler-icons';
 import { HeaderComponent } from './header/header.component';
 import { MatSidenav, MatSidenavContent } from '@angular/material/sidenav';
-import { Subscription } from 'rxjs';
 import { CoreService } from '../../services/core.service';
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { filter } from 'rxjs/operators';
-import { navItems } from './sidebar/sidebar-back-data';
+import { filter, Subscription } from 'rxjs';
+import { navItems } from './sidebar/sidebar-front-data';
 
 const MOBILE_VIEW = 'screen and (max-width: 768px)';
 const TABLET_VIEW = 'screen and (min-width: 769px) and (max-width: 1024px)';
 
 @Component({
-  selector: 'app-back-office',
+  selector: 'app-front-office',
   standalone: true,
   imports: [
     RouterModule,
@@ -30,11 +29,11 @@ const TABLET_VIEW = 'screen and (min-width: 769px) and (max-width: 1024px)';
     TablerIconsModule,
     HeaderComponent
   ],
-  templateUrl: './back-office.component.html',
-  styleUrl: './back-office.component.scss',
+  templateUrl: './front-office.component.html',
+  styleUrl: './front-office.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class BackOfficeComponent implements OnInit {
+export class FrontOfficeComponent implements OnInit {
   navItems = navItems;
 
   @ViewChild('leftsidenav')
@@ -51,54 +50,54 @@ export class BackOfficeComponent implements OnInit {
   private readonly htmlElement!: HTMLHtmlElement;
 
   get isOver(): boolean {
-      return this.isMobileScreen;
+        return this.isMobileScreen;
   }
 
   constructor(
-      private readonly settings: CoreService,
-      private readonly router: Router,
-      private readonly breakpointObserver: BreakpointObserver,
+        private readonly settings: CoreService,
+        private readonly router: Router,
+        private readonly breakpointObserver: BreakpointObserver,
   ) {
       this.htmlElement = document.querySelector('html')!;
       this.layoutChangesSubscription = this.breakpointObserver
-        .observe([MOBILE_VIEW, TABLET_VIEW])
-        .subscribe((state) => {
-          this.options.sidenavOpened = true;
-          this.isMobileScreen = state.breakpoints[MOBILE_VIEW];
-          if (!this.options.sidenavCollapsed) {
-            this.options.sidenavCollapsed = state.breakpoints[TABLET_VIEW];
-          }
-        });
+          .observe([MOBILE_VIEW, TABLET_VIEW])
+          .subscribe((state) => {
+            this.options.sidenavOpened = true;
+            this.isMobileScreen = state.breakpoints[MOBILE_VIEW];
+            if (!this.options.sidenavCollapsed) {
+              this.options.sidenavCollapsed = state.breakpoints[TABLET_VIEW];
+            }
+      });
 
       this.router.events
-        .pipe(filter((event) => event instanceof NavigationEnd))
-        .subscribe((e) => {
-          this.content.scrollTo({ top: 0 });
-        });
+          .pipe(filter((event) => event instanceof NavigationEnd))
+          .subscribe((e) => {
+            this.content.scrollTo({ top: 0 });
+      });
   }
 
   ngOnInit(): void {}
 
   ngOnDestroy() {
-      this.layoutChangesSubscription.unsubscribe();
+    this.layoutChangesSubscription.unsubscribe();
   }
 
   toggleCollapsed() {
-      this.isContentWidthFixed = false;
-      this.options.sidenavCollapsed = !this.options.sidenavCollapsed;
-      this.resetCollapsedState();
+    this.isContentWidthFixed = false;
+    this.options.sidenavCollapsed = !this.options.sidenavCollapsed;
+    this.resetCollapsedState();
   }
 
   resetCollapsedState(timer = 400) {
-      setTimeout(() => this.settings.setOptions(this.options), timer);
+    setTimeout(() => this.settings.setOptions(this.options), timer);
   }
 
   onSidenavClosedStart() {
-      this.isContentWidthFixed = false;
+    this.isContentWidthFixed = false;
   }
 
   onSidenavOpenedChange(isOpened: boolean) {
-      this.isCollapsedWidthFixed = !this.isOver;
-      this.options.sidenavOpened = isOpened;
+    this.isCollapsedWidthFixed = !this.isOver;
+    this.options.sidenavOpened = isOpened;
   }
 }

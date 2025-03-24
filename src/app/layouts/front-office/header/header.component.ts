@@ -1,10 +1,4 @@
-import {
-  Component,
-  Output,
-  EventEmitter,
-  Input,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angular/core';
 import { TablerIconsModule } from 'angular-tabler-icons';
 import { NgScrollbarModule } from 'ngx-scrollbar';
 import { MaterialModule } from '../../../material.module';
