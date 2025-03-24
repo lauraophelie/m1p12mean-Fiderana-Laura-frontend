@@ -52,7 +52,7 @@ export class BackOfficeComponent implements OnInit {
 
   get isOver(): boolean {
       return this.isMobileScreen;
-    }
+  }
 
   constructor(
       private readonly settings: CoreService,

@@ -2,8 +2,14 @@ import { Routes } from '@angular/router';
 import { BlankComponent } from './layouts/blank/blank.component';
 import { FullComponent } from './layouts/full/full.component';
 import { BackOfficeComponent } from './layouts/back-office/back-office.component';
+import { FrontOfficeComponent } from './layouts/front-office/front-office.component';
 
 export const routes: Routes = [
+    {
+      path: 'front',
+      component: FrontOfficeComponent,
+      children: []
+    },
     {
       path: 'back',
       component: BackOfficeComponent,
