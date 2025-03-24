@@ -1,6 +1,6 @@
 <mat-card class="cardWithShadow theme-card">
   <mat-card-header>
-    <mat-card-title class="m-b-0">Insertion de prestation</mat-card-title>
+    <mat-card-title class="m-b-0">Insertion de pièce</mat-card-title>
   </mat-card-header>
 
   <mat-card-content class="b-t-1">
@@ -29,7 +29,7 @@
         <div class="col-lg-12">
           <mat-label class="f-w-600 m-b-8 d-block">Modèle(s) de voiture compatible(s)</mat-label>
           <mat-form-field appearance="outline" class="w-100" color="primary">
-            <mat-select placeholder="Choisir une catégorie parmi la liste" name="modeleId" id="modeleId" [(ngModel)]="newPiece.modelesCompatibles" multiple required>
+            <mat-select placeholder="Choisir un ou plusieurs modèles de voiture parmi la liste" name="modeleId" id="modeleId" [(ngModel)]="newPiece.modelesCompatibles" multiple required>
               @for(option of modelesVoitures; track option) {
                 <mat-option [value]="option._id">
                   {{ option.designationModele }}
@@ -49,7 +49,7 @@
         <div class="col-lg-12">
           <mat-label class="f-w-600 m-b-8 d-block">Seuil d'alerte</mat-label>
           <mat-form-field appearance="outline" class="w-100" color="primary">
-            <input matInput placeholder="Ecrivez ici" id="seuilAlerte" name="seuilAlerte" [(ngModel)]="newPiece.seuilAlerte" required />
+            <input matInput placeholder="Ecrivez ici" id="seuilAlerte" name="seuilAlerte" type="number" [(ngModel)]="newPiece.seuilAlerte" required />
           </mat-form-field>
         </div>
 
