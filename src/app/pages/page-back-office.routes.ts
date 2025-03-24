@@ -1,3 +1,4 @@
+import { PiecesAjoutComponent } from './back-office/pieces-ajout/pieces-ajout.component';
 import { Routes } from "@angular/router";
 import { MarqueVoitureComponent } from "./back-office/marque-voiture/marque-voiture.component";
 import { ModeleVoitureComponent } from "./back-office/modele-voiture/modele-voiture.component";
@@ -75,5 +76,12 @@ export const PagesBackOfficePrestationsRoutes: Routes = [
   {
     path: 'liste/:prestationId',
     component: PrestationsDetailsComponent
+  }
+];
+
+export const PagesBackOfficePiecesRoutes: Routes = [
+  {
+    path: '',
+    component: PiecesAjoutComponent
   }
 ];

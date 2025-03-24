@@ -45,6 +45,11 @@ export const navItems: NavItem[] = [
     route: '/back/prestation/prestationMarque'
   },
   {
+    displayName: 'Ajout de pièce',
+    iconName: 'solar:archive-minimalistic-line-duotone',
+    route: '/back/piece'
+  },
+  {
     navCap: 'Employés',
     divider: true
   },
