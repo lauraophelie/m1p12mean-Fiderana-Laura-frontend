@@ -1,11 +1,12 @@
 import { Voiture } from './../../services/voitures/voitures.service';
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { VoituresService } from '../../services/voitures/voitures.service';
 import { ElementsVoitureService } from '../../services/voitures/elements-voiture.service';
 import { MaterialModule } from '../../material.module';
 import { forkJoin } from 'rxjs';
+import { MarqueService } from '../../services/marques/marque.service';
 
 @Component({
   selector: 'app-infos-voitures-insert',
@@ -18,7 +19,7 @@ import { forkJoin } from 'rxjs';
   templateUrl: './infos-voitures-insert.component.html',
   styleUrl: './infos-voitures-insert.component.scss'
 })
-export class InfosVoituresInsertComponent implements OnInit {
+export class InfosVoituresInsertComponent implements OnInit, OnDestroy {
   newInfosVoiture: Voiture = {
     immatriculation: '',
     marqueId: '',
@@ -31,13 +32,16 @@ export class InfosVoituresInsertComponent implements OnInit {
     remarques: '',
     images: []
   };
+  listeMarques: any[] = [];
+  listeModeles: any[] = [];
   listeBoiteVitesse: any[] = [];
   listeCategorieVoiture: any[] = [];
   listeTypeEnergie: any[] = [];
 
   constructor(
     private readonly voitureService: VoituresService,
-    private readonly elementsVoitureService: ElementsVoitureService
+    private readonly elementsVoitureService: ElementsVoitureService,
+    private readonly marqueService: MarqueService
   ) {}
   ngOnInit(): void {
     this.loadElementsVoiture();
@@ -47,15 +51,51 @@ export class InfosVoituresInsertComponent implements OnInit {
     forkJoin({
       vitesse: this.elementsVoitureService.getVitesses(),
       categories: this.elementsVoitureService.getCategoriesVoiture(),
-      energies: this.elementsVoitureService.getTypeEnergies()
+      energies: this.elementsVoitureService.getTypeEnergies(),
+      marques: this.marqueService.getMarques()
     }).subscribe({
       next: (response: any) => {
         this.listeBoiteVitesse = response.vitesse.data;
         this.listeCategorieVoiture = response.categories.data;
         this.listeTypeEnergie = response.energies.data;
+        this.listeMarques = response.marques.data;
       }
     });
   };
+
+  loadModeleVoiture(): void {
+    if (this.newInfosVoiture.marqueId) {
+      this.marqueService.getListeModele(this.newInfosVoiture.marqueId).subscribe((response: any) => {
+        this.listeModeles = response.data;
+      });
+    };
+  };
+
+  imageUrls: string[] = [];
+  onFilesSelected(event: any): void {
+    const files: FileList = event.target.files;
+
+    if (files) {
+      if (!Array.isArray(this.newInfosVoiture.images)) {
+        this.newInfosVoiture.images = [];
+      }
+      Array.from(files).forEach(file => {
+        this.newInfosVoiture.images?.push(file);
+        const imageUrl = URL.createObjectURL(file);
+        this.imageUrls.push(imageUrl);
+      });
+    }
+  };
+
+  removeImage(index: number): void {
+    this.newInfosVoiture.images?.splice(index, 1);
+    URL.revokeObjectURL(this.imageUrls[index]);
+    this.imageUrls.splice(index, 1);
+  }
+
+  ngOnDestroy(): void {
+    this.imageUrls.forEach(url => URL.revokeObjectURL(url));
+  }
 
   addInfosVoiture(): void {
     if(this.checkInfosVoiture()) {

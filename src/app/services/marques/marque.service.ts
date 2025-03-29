@@ -23,4 +23,8 @@ export class MarqueService {
   addMarque(marque: Marque): Observable<any> {
     return this.http.post(this.apiUrl, marque);
   }
+
+  getListeModele(marqueId: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/modeles/${marqueId}`);
+  }
 }

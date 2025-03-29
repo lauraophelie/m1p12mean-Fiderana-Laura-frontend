@@ -6,7 +6,8 @@ export const navItems: NavItem[] = [
   },
   {
     displayName: 'Accueil',
-    iconName: 'solar:home-outline'
+    iconName: 'solar:home-outline',
+    route: '/front/home'
   },
   {
     displayName: 'Nos services',
@@ -18,10 +19,12 @@ export const navItems: NavItem[] = [
   },
   {
     displayName: 'Vos véhicules',
-    iconName: 'solar:wheel-bold-duotone'
+    iconName: 'solar:wheel-bold-duotone',
+    route: '/front/voitures'
   },
   {
     displayName: 'Vos rendez-vous',
-    iconName: 'solar:clipboard-list-linear'
+    iconName: 'solar:clipboard-list-linear',
+    route: '/front/rdv'
   }
 ];

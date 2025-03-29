@@ -8,7 +8,23 @@ export const routes: Routes = [
     {
       path: 'front',
       component: FrontOfficeComponent,
-      children: []
+      children: [
+        {
+          path: 'home',
+          loadChildren:
+            () => import('./pages/page-front-office.routes').then((m) => m.PagesFrontOfficeRoutes)
+        },
+        {
+          path: 'voitures',
+          loadChildren:
+            () => import('./pages/page-front-office.routes').then((m) => m.PagesFrontOfficeVoituresRoutes)
+        },
+        {
+          path: 'rdv',
+          loadChildren:
+            () => import('./pages/page-front-office.routes').then((m) => m.PagesFrontOfficeRdvRoutes)
+        }
+      ]
     },
     {
       path: 'back',

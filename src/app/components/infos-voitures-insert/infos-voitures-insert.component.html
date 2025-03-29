@@ -1,1 +1,125 @@
-<p>infos-voitures-insert works!</p>
+<mat-card class="cardWithShadow theme-card">
+  <mat-card-header>
+    <mat-card-title class="m-b-0">Insertion d'informations concernant votre voiture</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content class="b-t-1">
+    <form (ngSubmit)="addInfosVoiture()" #infosVoitureForm="ngForm">
+      <mat-stepper #stepper>
+        <mat-step>
+          <ng-template matStepLabel> Informations </ng-template>
+          <div class="row">
+            <div class="col-lg-12">
+              <mat-label class="f-w-600 m-b-8 d-block">Numéro d'immatriculation</mat-label>
+              <mat-form-field appearance="outline" class="w-100" color="primary">
+                <input type="text" matInput  placeholder="Ecrivrez ici" id="immatriculation" name="immatriculation" [(ngModel)]="newInfosVoiture.immatriculation" required/>
+              </mat-form-field>
+            </div>
+
+            <div class="col-lg-12">
+              <mat-label class="f-w-600 m-b-8 d-block">Marque de la voiture</mat-label>
+              <mat-form-field appearance="outline" class="w-100" color="primary">
+                <mat-select placeholder="Choisir parmi la liste" name="marqueId" id="marqueId" [(ngModel)]="newInfosVoiture.marqueId" (ngModelChange)="loadModeleVoiture()">
+                  @for(option of listeMarques; track option) {
+                    <mat-option [value]="option._id">
+                      {{ option.designationMarque }}
+                    </mat-option>
+                  }
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div class="col-lg-12">
+              <mat-label class="f-w-600 m-b-8 d-block">Modèle de la voiture</mat-label>
+              <mat-form-field appearance="outline" class="w-100" color="primary">
+                <mat-select placeholder="Choisir parmi la liste" name="modeleId" id="modeleId" [(ngModel)]="newInfosVoiture.modeleId">
+                  @for(option of listeModeles; track option) {
+                    <mat-option [value]="option._id">
+                      {{ option.designationModele }}
+                    </mat-option>
+                  }
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div class="col-lg-12">
+              <mat-label class="f-w-600 m-b-8 d-block">Type de boîte de vitesse</mat-label>
+              <mat-form-field appearance="outline" class="w-100" color="primary">
+                <mat-select placeholder="Choisir parmi la liste" [(ngModel)]="newInfosVoiture.boiteVitesseId" id="boiteVitesseId" name="boiteVitesseId" required>
+                  @for(option of listeBoiteVitesse; track option) {
+                    <mat-option [value]="option._id">
+                      {{ option.designationBoite }}
+                    </mat-option>
+                  }
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div class="col-lg-12">
+              <mat-label class="f-w-600 m-b-8 d-block">Catégorie de la voiture</mat-label>
+              <mat-form-field appearance="outline" class="w-100" color="primary">
+                <mat-select placeholder="Choisir parmi la liste" [(ngModel)]="newInfosVoiture.categorieVoitureId" id="categorieVoitureId" name="categorieVoitureId" required>
+                  @for(option of listeCategorieVoiture; track option) {
+                    <mat-option [value]="option._id">
+                      {{ option.designationCategorie }}
+                    </mat-option>
+                  }
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div class="col-lg-12">
+              <mat-label class="f-w-600 m-b-8 d-block">Type énergie utilisé</mat-label>
+              <mat-form-field appearance="outline" class="w-100" color="primary">
+                <mat-select placeholder="Choisir parmi la liste" [(ngModel)]="newInfosVoiture.typeEnergieId" id="typeEnergieId" name="typeEnergieId" required>
+                  @for(option of listeTypeEnergie; track option) {
+                    <mat-option [value]="option._id">
+                      {{ option.designationTypeEnergie }}
+                    </mat-option>
+                  }
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div class="col-lg-12">
+              <button mat-flat-button color="primary" matStepperNext>Suivant</button>
+            </div>
+          </div>
+        </mat-step>
+
+        <mat-step>
+          <ng-template matStepLabel> Détails </ng-template>
+          <div class="row">
+            <div class="col-lg-12">
+              <mat-label class="f-w-600 m-b-8 d-block">Année de fabrication</mat-label>
+              <mat-form-field appearance="outline" class="w-100" color="primary">
+                <input matInput type="number" [(ngModel)]="newInfosVoiture.anneeFabrication" placeholder="Ecrivez ici (ex: 2025)" id="anneeFabrication" name="anneeFabrication">
+              </mat-form-field>
+            </div>
+
+            <div class="col-lg-12">
+              <mat-label class="f-w-600 m-b-8 d-block">Remarques</mat-label>
+              <mat-form-field appearance="outline" class="w-100" color="primary">
+                <textarea matInput [(ngModel)]="newInfosVoiture.remarques" id="remarques" name="remarques"></textarea>
+              </mat-form-field>
+            </div>
+
+            <div class="col-lg-12">
+              <mat-label class="f-w-600 m-b-8 d-block">Images (Sélectionnez une ou plusieurs images) </mat-label>
+              <input type="file" [(ngModel)]="newInfosVoiture.images" id="images" name="images" multiple (change)="onFilesSelected($event)">
+            </div>
+          </div>
+          <div class="row m-t-8" *ngIf="imageUrls.length > 0">
+            <div class="col-lg-2" *ngFor="let imageUrl of imageUrls; let i = index">
+              <img [src]="imageUrl" alt="Image sélectionnée" width="100%" height="100%">
+            </div>
+          </div>
+
+          <div class="m-t-12">
+            <button mat-flat-button class="m-r-8" color="primary" type="submit" [disabled]="infosVoitureForm.invalid"> Valider </button>
+          </div>
+        </mat-step>
+      </mat-stepper>
+    </form>
+  </mat-card-content>
+</mat-card>
