@@ -1,1 +1,64 @@
-<p>add-rdv-client works!</p>
+<mat-card class="cardWithShadow theme-card">
+  <mat-card-header>
+    <mat-card-title class="m-b-0">Demander un rendez-vous</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content class="b-t-1">
+    <form (ngSubmit)="addRendezVous()" #rdvForm="ngForm">
+      <div class="row">
+        <div class="col-lg-6">
+          <mat-label class="f-w-600 m-b-8 d-block">Date du rendez-vous</mat-label>
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <input type="date" name="dateRdv" id="dateRdv" matInput [(ngModel)]="newRdv.dateRdv" required>
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-6">
+          <mat-label class="f-w-600 m-b-8 d-block">Heure du rendez-vous</mat-label>
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <input type="time" name="heureRdv" id="heureRdv" matInput [(ngModel)]="newRdv.heureRdv" required>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12">
+          <mat-label class="f-w-600 m-b-8 d-block">Voiture concernée</mat-label>
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <mat-select name="voitureId" id="voitureId" [(ngModel)]="newRdv.voitureId" placeholder="Choisir un véhicules parmi la liste" required>
+
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12">
+          <mat-label class="f-w-600 m-b-8 d-block">Services</mat-label>
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <mat-select name="services" multiple id="services" [(ngModel)]="newRdv.services" placeholder="Choisir un ou des services parmis la liste" required>
+              @for(option of listeServices; track option) {
+                <mat-option [value]="option._id">
+                  {{ option.nomService }}
+                </mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12">
+          <mat-label class="f-w-600 m-b-8 d-block">Commentaire(s) / Remarque(s)</mat-label>
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <textarea name="commentaire" id="commentaire" matInput [(ngModel)]="newRdv.commentaire"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="m-t-12">
+        <button mat-flat-button class="m-r-8" color="primary" type="submit" [disabled]="rdvForm.invalid"> Valider </button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

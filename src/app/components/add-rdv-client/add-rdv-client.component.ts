@@ -5,13 +5,15 @@ import { VoituresService } from '../../services/voitures/voitures.service';
 import { RendezVous, RendezVousService } from '../../services/rendez-vous/rendez-vous.service';
 import { ServicesGarageService } from '../../services/services-garage/services-garage.service';
 import { forkJoin } from 'rxjs';
+import { MaterialModule } from '../../material.module';
 
 @Component({
   selector: 'app-add-rdv-client',
   standalone: true,
   imports: [
     FormsModule,
-    CommonModule
+    CommonModule,
+    MaterialModule
   ],
   templateUrl: './add-rdv-client.component.html',
   styleUrl: './add-rdv-client.component.scss'

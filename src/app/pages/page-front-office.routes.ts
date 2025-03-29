@@ -3,6 +3,7 @@ import { InfosVoitureClientComponent } from "./front-office/infos-voiture-client
 import { VoituresClientComponent } from "./front-office/voitures-client/voitures-client.component";
 import { AccueilClientComponent } from "./front-office/accueil-client/accueil-client.component";
 import { RdvsClientComponent } from "./front-office/rdvs-client/rdvs-client.component";
+import { InsertRdvClientComponent } from "./front-office/insert-rdv-client/insert-rdv-client.component";
 
 export const PagesFrontOfficeRoutes: Routes = [
   {
@@ -26,5 +27,9 @@ export const PagesFrontOfficeRdvRoutes: Routes = [
   {
     path: '',
     component: RdvsClientComponent
+  },
+  {
+    path: 'add',
+    component: InsertRdvClientComponent
   }
 ]

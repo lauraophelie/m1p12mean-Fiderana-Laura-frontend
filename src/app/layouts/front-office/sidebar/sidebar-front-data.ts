@@ -14,6 +14,11 @@ export const navItems: NavItem[] = [
     iconName: 'solar:notebook-bold'
   },
   {
+    displayName: 'Rendez-vous',
+    iconName: 'solar:calendar-date-bold',
+    route: '/front/rdv/add'
+  },
+  {
     navCap: 'Vous',
     divider: true
   },
