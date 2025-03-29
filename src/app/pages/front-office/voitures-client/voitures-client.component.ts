@@ -6,12 +6,14 @@ import { MatPaginator } from '@angular/material/paginator';
 import { ServiceGarage } from '../../../services/services-garage/services-garage.service';
 import { variableTest } from '../../../../variables-test/variable';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-voitures-client',
   standalone: true,
   imports: [
-    MaterialModule
+    MaterialModule,
+    CommonModule
   ],
   templateUrl: './voitures-client.component.html',
   styleUrl: './voitures-client.component.scss'
@@ -43,7 +45,6 @@ export class VoituresClientComponent implements OnInit, AfterViewInit {
 
   loadVoitures(): void {
     this.voitureService.getVoituresClient(this.clientId, this.currentPage, this.itemsPerPage).subscribe((response: any) => {
-      console.log(response);
       this.listeVoitures = response.data;
       this.totalItems = response.totalItems;
       this.dataSource.data = this.listeVoitures;

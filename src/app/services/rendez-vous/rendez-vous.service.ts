@@ -33,7 +33,7 @@ export class RendezVousService {
   getAllRdv(page: string, limit: string | number): Observable<any> {
     return this.http.get(`${this.apiUrl}/paginate?page=${page}&limit=${limit}`);
   }
-  getRdvsClient(clientId: string, page: string, limit: string | number): Observable<any> {
+  getRdvsClient(clientId: string, page: string | number, limit: string | number): Observable<any> {
     return this.http.get(`${this.apiUrl}/client/${clientId}?page=${page}&limit=${limit}`);
   }
 }
