@@ -29,8 +29,12 @@ export class VoituresService {
     return this.http.post(this.apiURl, voiture);
   }
 
-  getVoituresClient(clientId: string): Observable<any> {
-    return this.http.get(`${this.apiURl}/paginate/${clientId}`);
+  getVoituresClient(clientId: string, page: string, limit: string | number): Observable<any> {
+    return this.http.get(`${this.apiURl}/paginate/${clientId}?page=${page}&limit=${limit}`);
+  }
+
+  getAllVoituresClient(clientId: string): Observable<any> {
+    return this.http.get(`${this.apiURl}/all/${clientId}`);
   }
 
   getDetailsVoiture(voitureId: string): Observable<any> {
