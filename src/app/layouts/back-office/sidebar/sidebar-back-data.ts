@@ -50,6 +50,30 @@ export const navItems: NavItem[] = [
     route: '/back/piece'
   },
   {
+    navCap: 'Gestion de stocks',
+    divider: true
+  },
+  {
+    displayName: 'Etat de stocks',
+    iconName: 'solar:checklist-minimalistic-broken',
+    route: ''
+  },
+  {
+    displayName: 'Demande(s) de pièces',
+    iconName: '',
+    route: ''
+  },
+  {
+    displayName: 'Retour(s) de pièces',
+    iconName: '',
+    route: ''
+  },
+  {
+    displayName: 'Perte(s) de pièces',
+    iconName: '',
+    route: ''
+  },
+  {
     navCap: 'Employés',
     divider: true
   },
