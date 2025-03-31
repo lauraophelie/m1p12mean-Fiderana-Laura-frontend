@@ -9,6 +9,7 @@ import { PrestationsAddFormComponent } from "./back-office/prestations-add-form/
 import { PrestationsMarquesAddComponent } from "../components/prestations-marques-add/prestations-marques-add.component";
 import { PrestationsListeComponent } from "./back-office/prestations-liste/prestations-liste.component";
 import { PrestationsDetailsComponent } from "./back-office/prestations-details/prestations-details.component";
+import { EtatStocksComponent } from './back-office/etat-stocks/etat-stocks.component';
 
 export const PagesBackOfficeRoutes: Routes = [
   {
@@ -83,5 +84,9 @@ export const PagesBackOfficePiecesRoutes: Routes = [
   {
     path: '',
     component: PiecesAjoutComponent
+  },
+  {
+    path: 'stocks/etat',
+    component: EtatStocksComponent
   }
 ];

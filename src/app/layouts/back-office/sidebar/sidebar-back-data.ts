@@ -56,7 +56,7 @@ export const navItems: NavItem[] = [
   {
     displayName: 'Etat de stocks',
     iconName: 'solar:checklist-minimalistic-broken',
-    route: ''
+    route: '/back/piece/stocks/etat'
   },
   {
     displayName: 'Demande(s) de pièces',
