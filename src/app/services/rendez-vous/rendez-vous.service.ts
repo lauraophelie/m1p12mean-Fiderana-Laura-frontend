@@ -30,7 +30,7 @@ export class RendezVousService {
   getDetailsRdv(rendezVousId: string): Observable<any> {
     return this.http.get(`${this.apiUrl}/${rendezVousId}`);
   }
-  getAllRdv(page: string, limit: string | number): Observable<any> {
+  getAllRdv(page: string | number, limit: string | number): Observable<any> {
     return this.http.get(`${this.apiUrl}/paginate?page=${page}&limit=${limit}`);
   }
   getRdvsClient(clientId: string, page: string | number, limit: string | number): Observable<any> {
