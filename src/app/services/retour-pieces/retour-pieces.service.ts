@@ -20,7 +20,7 @@ export class RetourPiecesService {
   private readonly apiUrl = `${environment.apiUrl}/api/piece/retour`;
 
   constructor(private readonly http: HttpClient) { }
-
+  
   insertRetourPiece(retour: RetourPiece): Observable<any> {
     return this.http.post(this.apiUrl, retour);
   }

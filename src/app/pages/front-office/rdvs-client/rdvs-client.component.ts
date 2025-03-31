@@ -36,7 +36,7 @@ export class RdvsClientComponent implements OnInit, AfterViewInit {
   ) {}
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatTable) table!: MatTable<ServiceGarage>;
+  @ViewChild(MatTable) table!: MatTable<any>;
 
   ngOnInit(): void {
     this.loadRdvClients();
