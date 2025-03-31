@@ -28,6 +28,10 @@ export class ServicesGarageService {
     return this.http.post(this.apiUrl, service);
   }
 
+  getRandomServices(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/random`);
+  }
+
   getDetailsService(serviceId: string): Observable<any> {
     return this.http.get(`${this.apiUrl}/${serviceId}`);
   }

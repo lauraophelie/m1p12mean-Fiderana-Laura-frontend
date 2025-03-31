@@ -1,0 +1,20 @@
+@if(status == 0) {
+  <span class="bg-light-secondar text-secondary rounded f-w-600 p-6 p-y-4 f-s-12">
+    {{ 'En attente' }}
+  </span>
+}
+@if(status == -10) {
+  <span class="bg-light-error text-error rounded f-w-600 p-6 p-y-4 f-s-12">
+    {{ 'Refusé' }}
+  </span>
+}
+@if(status == -5) {
+  <span class="bg-light-warning text-warning rounded f-w-600 p-6 p-y-4 f-s-12">
+    {{ 'Annulé'}}
+  </span>
+}
+@if(status == 10) {
+  <span class="bg-light-success text-success rounded f-w-600 p-6 p-y-4 f-s-12">
+    {{ 'Validé' }}
+  </span>
+}
