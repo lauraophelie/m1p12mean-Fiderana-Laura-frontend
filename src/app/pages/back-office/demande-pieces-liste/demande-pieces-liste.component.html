@@ -1,1 +1,78 @@
-<p>demande-pieces-liste works!</p>
+<mat-card class="cardWithShadow theme-card">
+  <mat-card-header class="m-b-8 m-t-8">
+    <div class="col-lg-12">
+      <mat-card-title class="m-b-0">Demande(s) de pièces</mat-card-title>
+    </div>
+  </mat-card-header>
+
+  <mat-card-content class="b-t-1">
+    <div class="row" *ngIf="totalItems == 0" style="justify-content: center;">
+      <p>La liste est vide. Aucune demande de pièces n'a pas encore été faite.</p>
+    </div>
+
+    <div class="row" *ngIf="totalItems > 0">
+      <div class="col-12">
+        <table mat-table [dataSource]="dataSource">
+          <ng-container matColumnDef="dateDemande">
+            <th mat-header-cell *matHeaderCellDef> Date demande </th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.dateDemande | date: 'yyyy-MM-dd' }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="motifDemande">
+            <th mat-header-cell *matHeaderCellDef> Motif de la demande </th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.motifDemande }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="mecanicienId">
+            <th mat-header-cell *matHeaderCellDef> Mécanicien </th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.mecanicienId.nomEmploye + ' ' + element.mecanicienId.prenom }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef> Status </th>
+            <td mat-cell *matCellDef="let element">
+              <app-badge-status [status]="element.status"></app-badge-status>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> Actions </th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-icon-button matTooltip="Détails">
+                <mat-icon>search</mat-icon>
+              </button>
+
+              <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="element.status == 0">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item color="primary">
+                  <mat-icon>check</mat-icon>
+                  <span>Valider la demande</span>
+                </button>
+
+                <button mat-menu-item>
+                  <mat-icon>delete</mat-icon>
+                  <span>Refuser la demande</span>
+                </button>
+              </mat-menu>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 25]" [length]="totalItems" [pageSize]="itemsPerPage" showFirstLastButtons>
+        </mat-paginator>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

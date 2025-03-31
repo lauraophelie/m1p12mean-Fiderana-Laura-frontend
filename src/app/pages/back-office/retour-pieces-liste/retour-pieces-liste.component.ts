@@ -4,13 +4,15 @@ import { MaterialModule } from '../../../material.module';
 import { RetourPiecesService } from '../../../services/retour-pieces/retour-pieces.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { BadgeStatusComponent } from '../../../components/badge-status/badge-status.component';
 
 @Component({
   selector: 'app-retour-pieces-liste',
   standalone: true,
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    BadgeStatusComponent
   ],
   templateUrl: './retour-pieces-liste.component.html',
   styleUrl: './retour-pieces-liste.component.scss'
@@ -21,7 +23,7 @@ export class RetourPiecesListeComponent implements OnInit, AfterViewInit {
   itemsPerPage = 10;
   totalItems = 0;
 
-  displayedColumns: string[] = [];
+  displayedColumns: string[] = ["dateRetour", "pieceId", "quantiteRetour", "motifRetour", "mecanicienId", "status", "actions"];
   dataSource = new MatTableDataSource<any>();
 
   constructor(

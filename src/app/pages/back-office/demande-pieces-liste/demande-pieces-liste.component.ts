@@ -4,13 +4,15 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../../../material.module';
+import { BadgeStatusComponent } from '../../../components/badge-status/badge-status.component';
 
 @Component({
   selector: 'app-demande-pieces-liste',
   standalone: true,
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    BadgeStatusComponent
   ],
   templateUrl: './demande-pieces-liste.component.html',
   styleUrl: './demande-pieces-liste.component.scss'
@@ -21,7 +23,7 @@ export class DemandePiecesListeComponent implements OnInit, AfterViewInit {
   itemsPerPage = 10;
   totalItems = 0;
 
-  displayedColumns: string[] = [];
+  displayedColumns: string[] = ["dateDemande", "motifDemande", "mecanicienId", "status", "actions"];
   dataSource = new MatTableDataSource<any>();
 
   constructor(
@@ -37,7 +39,6 @@ export class DemandePiecesListeComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
   }
-
   loadDemandePieces(): void {
     this.demandesPiecesService.getDemandePieces(this.currentPage, this.itemsPerPage).subscribe((response: any) => {
       this.listeDemandes = response.data;

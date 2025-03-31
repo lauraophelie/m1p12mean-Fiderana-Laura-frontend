@@ -23,7 +23,7 @@ export class PertePiecesListeComponent implements OnInit, AfterViewInit {
   itemsPerPage = 10;
   totalItems = 0;
 
-  displayedColumns: string[] = [];
+  displayedColumns: string[] = ["datePerte", "mecanicienId", "pieceId", "quantitePerdue", "status", "actions"];
   dataSource = new MatTableDataSource<NotificationPerte>();
 
   constructor(

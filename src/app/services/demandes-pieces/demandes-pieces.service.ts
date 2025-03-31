@@ -32,15 +32,15 @@ export class DemandesPiecesService {
   }
 
   updateDemandeId(demandeId: string, demande: DemandePiece): Observable<any> {
-    return this.http.put(`${this.apiUrl}/${demandeId}`, demande);
+    return this.http.put(`${this.apiUrl}/modif/${demandeId}`, demande);
   }
 
   getInfosDemandePiece(demandeId: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/${demandeId}`);
+    return this.http.get(`${this.apiUrl}/details/${demandeId}`);
   }
 
   getDemandePieceMecanicien(mecanicienId: string, page: string | number, limit: string | number): Observable<any> {
-    return this.http.get(`${this.apiUrl}/${mecanicienId}?page=${page}&limit=${limit}`);
+    return this.http.get(`${this.apiUrl}/meca/${mecanicienId}?page=${page}&limit=${limit}`);
   }
 
   getDemandePieces(page: string | number, limit: string | number): Observable<any> {

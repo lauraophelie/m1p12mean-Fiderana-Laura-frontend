@@ -60,18 +60,18 @@ export const navItems: NavItem[] = [
   },
   {
     displayName: 'Demande(s) de pièces',
-    iconName: '',
-    route: ''
+    iconName: 'solar:folder-2-outline',
+    route: '/back/piece/demandes'
   },
   {
     displayName: 'Retour(s) de pièces',
-    iconName: '',
-    route: ''
+    iconName: 'solar:folder-2-outline',
+    route: '/back/piece/retours'
   },
   {
     displayName: 'Perte(s) de pièces',
-    iconName: '',
-    route: ''
+    iconName: 'solar:folder-2-outline',
+    route: '/back/piece/pertes'
   },
   {
     navCap: 'Employés',

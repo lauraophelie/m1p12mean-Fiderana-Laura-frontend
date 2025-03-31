@@ -10,6 +10,9 @@ import { PrestationsMarquesAddComponent } from "../components/prestations-marque
 import { PrestationsListeComponent } from "./back-office/prestations-liste/prestations-liste.component";
 import { PrestationsDetailsComponent } from "./back-office/prestations-details/prestations-details.component";
 import { EtatStocksComponent } from './back-office/etat-stocks/etat-stocks.component';
+import { RetourPiecesListeComponent } from './back-office/retour-pieces-liste/retour-pieces-liste.component';
+import { PertePiecesListeComponent } from './back-office/perte-pieces-liste/perte-pieces-liste.component';
+import { DemandePiecesListeComponent } from './back-office/demande-pieces-liste/demande-pieces-liste.component';
 
 export const PagesBackOfficeRoutes: Routes = [
   {
@@ -88,5 +91,17 @@ export const PagesBackOfficePiecesRoutes: Routes = [
   {
     path: 'stocks/etat',
     component: EtatStocksComponent
+  },
+  {
+    path: 'retours',
+    component: RetourPiecesListeComponent
+  },
+  {
+    path: 'pertes',
+    component: PertePiecesListeComponent
+  },
+  {
+    path: 'demandes',
+    component: DemandePiecesListeComponent
   }
 ];
