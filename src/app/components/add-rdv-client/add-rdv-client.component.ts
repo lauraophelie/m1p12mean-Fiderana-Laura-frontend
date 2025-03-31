@@ -6,6 +6,7 @@ import { RendezVous, RendezVousService } from '../../services/rendez-vous/rendez
 import { ServicesGarageService } from '../../services/services-garage/services-garage.service';
 import { forkJoin } from 'rxjs';
 import { MaterialModule } from '../../material.module';
+import { variableTest } from '../../../variables-test/variable';
 
 @Component({
   selector: 'app-add-rdv-client',
@@ -19,7 +20,7 @@ import { MaterialModule } from '../../material.module';
   styleUrl: './add-rdv-client.component.scss'
 })
 export class AddRdvClientComponent implements OnInit {
-  clientId: string = '';
+  clientId: string = `${variableTest.client}`;
   newRdv: RendezVous = {
     dateRdv: '',
     heureRdv: '',
