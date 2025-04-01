@@ -30,11 +30,9 @@ export class InsertRetourPiecesComponent implements OnInit {
   constructor(
     private readonly retourPiecesServices: RetourPiecesService
   ) {}
-
   ngOnInit(): void {
     this.loadListePiece();
   }
-
   addRetourPiece(): void {
     if(this.checkDataRetourPiece()) {
       this.retourPiecesServices.insertRetourPiece(this.newRetourPiece).subscribe(() => {
@@ -48,14 +46,12 @@ export class InsertRetourPiecesComponent implements OnInit {
       })
     }
   }
-
   checkDataRetourPiece(): boolean {
     if(this.newRetourPiece.pieceId && this.newRetourPiece.quantiteRetour && this.newRetourPiece.motifRetour && this.newRetourPiece.mecanicienId) {
       return true;
     }
     return false;
   }
-
   loadListePiece(): void {
 
   }

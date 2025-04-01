@@ -1,1 +1,118 @@
-<p>insert-demande-pieces works!</p>
+<div class="row">
+  <div class="col-lg-12">
+    <mat-card class="cardWithShadow theme-card">
+      <mat-card-header>
+        <mat-card-title class="m-b-0">Demande de pièce(s)</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content class="b-t-1">
+        <form (ngSubmit)="insertDemandePiece()" #demandePieceForm="ngForm">
+          <mat-stepper #stepper>
+            <mat-step>
+              <ng-template matStepLabel> Informations </ng-template>
+              <div class="row">
+                <div class="col-lg-12">
+                  <mat-label class="f-w-600 m-b-8 d-block">Date de la demande</mat-label>
+                  <mat-form-field appearance="outline" class="w-100" color="primary">
+                    <input type="date" name="dateDemande" id="dateDemande" matInput [(ngModel)]="newDemandePiece.dateDemande" />
+                  </mat-form-field>
+                </div>
+
+                <div class="col-lg-12">
+                  <mat-label class="f-w-600 m-b-8 d-block">Motif de la demande</mat-label>
+                  <mat-form-field appearance="outline" class="w-100" color="primary">
+                    <textarea name="motifDemande" id="motifDemande" matInput [(ngModel)]="newDemandePiece.motifDemande" required></textarea>
+                  </mat-form-field>
+                </div>
+              </div>
+            </mat-step>
+
+            <mat-step>
+              <ng-template matStepLabel> Détails de la demande </ng-template>
+              <div class="row">
+                <div class="col-lg-3">
+                  <mat-label class="f-w-600 m-b-8 d-block">Pièce</mat-label>
+                  <mat-form-field appearance="outline" class="w-100" color="primary">
+                    <mat-select placeholder="Choisir parmi la liste" name="newPieceId" id="newPieceId" [(ngModel)]="newPieceId" required>
+                      @for(option of listePieces; track option) {
+                        <mat-option [value]="option._id">
+                          {{ option.nomPiece + ' (' + option.reference + ')' }}
+                        </mat-option>
+                      }
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="col-lg-3">
+                  <mat-label class="f-w-600 m-b-8 d-block">Quantité demandée</mat-label>
+                  <mat-form-field appearance="outline" class="w-100" color="primary">
+                    <input type="number" name="newQuantite" id="newQuantie" matInput min="1" placeholder="Entrez une valeur" [(ngModel)]="newQuantite" required />
+                  </mat-form-field>
+                </div>
+                <div class="col-lg-2">
+                  <button mat-flat-button color="primary" (click)="addToDetailsDemandePiece()"> Ajouter </button>
+                </div>
+              </div>
+
+              <div class="row" *ngIf="newDemandePiece.details.length > 0">
+                <div class="col-lg-12">
+                  <mat-card class="shadow-none m-t-12">
+                    <mat-card-content>
+                      <table>
+                        <tr *ngFor="let element of newDemandePiece.details; let i = index">
+                          <td> {{ element.nomPiece }} </td>
+                          <td> {{ element.quantite }} </td>
+                          <td>
+                            <button mat-mini-fab color="warn" (click)="deleteFromDetailsDemandePiece(i)">
+                              <mat-icon>delete</mat-icon>
+                            </button>
+                          </td>
+                        </tr>
+                      </table>
+                    </mat-card-content>
+                  </mat-card>
+                </div>
+              </div>
+            </mat-step>
+
+            <mat-step>
+              <ng-template matStepLabel> Validation de la demande </ng-template>
+              <div class="row">
+                <div class="col-lg-12">
+                  <mat-card class="b-1 shadow-none">
+                    <mat-card-header>
+                      <mat-card-title>Demande de pièce</mat-card-title>
+                    </mat-card-header>
+                  </mat-card>
+
+                  <mat-card-content class="b-t-1">
+                    <mat-list>
+                      <mat-list-item>
+                        <span matListItemTitle class="f-s-16 f-w-600">Motif de la demande</span>
+                        <span matListItemLine>
+                          {{ newDemandePiece.motifDemande }}
+                        </span>
+                      </mat-list-item>
+
+                      <div mat-subheader class="m-b-16 f-w-600">Pièce(s) demandée(s)</div>
+                      @for(element of newDemandePiece.details; track element) {
+                        <mat-list-item>
+                          <div matListItemTitle class="f-w-600">
+                            {{ element.nomPiece + ' : ' + element.quantite }}
+                          </div>
+                        </mat-list-item>
+                      }
+                    </mat-list>
+
+                    <div class="m-t-12">
+                      <button mat-flat-button class="m-r-8" color="primary" type="submit" [disabled]="demandePieceForm.invalid"> Valider </button>
+                    </div>
+                  </mat-card-content>
+                </div>
+              </div>
+            </mat-step>
+          </mat-stepper>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

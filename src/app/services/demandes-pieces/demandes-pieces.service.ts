@@ -3,12 +3,22 @@ import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+export interface DetailsDemandePiece {
+  _id?: string;
+  demandeId: string | '';
+  pieceId: string;
+  quantite: number;
+  status?: number | string;
+  nomPiece?: string;
+}
+
 export interface DemandePiece {
   _id?: string;
   dateDemande?: string;
   motifDemande: string;
   mecanicienId: string;
   status?: number | string;
+  details: DetailsDemandePiece[];
 }
 
 @Injectable({
