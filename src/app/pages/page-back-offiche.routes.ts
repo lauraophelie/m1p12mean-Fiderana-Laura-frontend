@@ -6,7 +6,10 @@ import { ServicesListeComponent } from "./back-office/services-liste/services-li
 import { ServicesDetailsComponent } from "./back-office/services-details/services-details.component";
 import { PrestationsAddFormComponent } from "./back-office/prestations-add-form/prestations-add-form.component";
 import { PrestationsMarquesAddComponent } from "../components/prestations-marques-add/prestations-marques-add.component";
-
+import { FormProfilComponent } from "./back-office/profil/form-profil/form-profil.component";
+import { FormPosteComponent } from "./back-office/poste/form-poste/form-poste.component";
+import { ListeProfilComponent } from "./back-office/profil/liste-profil/liste-profil.component";
+import { ListePosteComponent } from "./back-office/poste/liste-poste/liste-poste.component";
 export const PagesBackOfficeRoutes: Routes = [
   {
     path: '',
@@ -67,3 +70,38 @@ export const PagesBackOfficePrestationsRoutes: Routes = [
     component: PrestationsMarquesAddComponent
   }
 ];
+
+export const PagesBackOfficeInscriptionRoutes: Routes = [
+  {
+    path: '',
+    component: PrestationsAddFormComponent
+  },
+  {
+    path: 'prestationMarque',
+    component: PrestationsMarquesAddComponent
+  }
+];
+
+
+export const PagesBackOfficeProfilRoutes: Routes = [
+  {
+    path: '',
+    component: ListeProfilComponent
+  },
+  {
+    path: 'formProfil',
+    component: FormProfilComponent
+  }
+];
+
+export const PagesBackOfficePosteRoutes: Routes = [
+  {
+    path: '',
+    component: ListePosteComponent
+  },
+  {
+    path: 'formPoste',
+    component: FormPosteComponent
+  }
+];
+

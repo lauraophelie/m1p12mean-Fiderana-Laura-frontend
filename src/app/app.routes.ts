@@ -22,6 +22,16 @@ export const routes: Routes = [
           path: 'prestation',
           loadChildren:
             () => import('./pages/page-back-offiche.routes').then((m) => m.PagesBackOfficePrestationsRoutes)
+        },
+        {
+          path: 'profil',
+          loadChildren:
+            () => import('./pages/page-back-offiche.routes').then((m) => m.PagesBackOfficeProfilRoutes)
+        },
+        {
+          path: 'poste',
+          loadChildren:
+            () => import('./pages/page-back-offiche.routes').then((m) => m.PagesBackOfficePosteRoutes)
         }
       ]
     },
