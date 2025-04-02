@@ -7,7 +7,10 @@ import { ServicesListeComponent } from "./back-office/services-liste/services-li
 import { ServicesDetailsComponent } from "./back-office/services-details/services-details.component";
 import { PrestationsAddFormComponent } from "./back-office/prestations-add-form/prestations-add-form.component";
 import { PrestationsMarquesAddComponent } from "../components/prestations-marques-add/prestations-marques-add.component";
-import { PrestationsListeComponent } from "./back-office/prestations-liste/prestations-liste.component";
+import { FormProfilComponent } from "./back-office/profil/form-profil/form-profil.component";
+import { FormPosteComponent } from "./back-office/poste/form-poste/form-poste.component";
+import { ListeProfilComponent } from "./back-office/profil/liste-profil/liste-profil.component";
+import { ListePosteComponent } from "./back-office/poste/liste-poste/liste-poste.component";import { PrestationsListeComponent } from "./back-office/prestations-liste/prestations-liste.component";
 import { PrestationsDetailsComponent } from "./back-office/prestations-details/prestations-details.component";
 import { EtatStocksComponent } from './back-office/etat-stocks/etat-stocks.component';
 import { RetourPiecesListeComponent } from './back-office/retour-pieces-liste/retour-pieces-liste.component';
@@ -105,3 +108,38 @@ export const PagesBackOfficePiecesRoutes: Routes = [
     component: DemandePiecesListeComponent
   }
 ];
+
+export const PagesBackOfficeInscriptionRoutes: Routes = [
+  {
+    path: '',
+    component: PrestationsAddFormComponent
+  },
+  {
+    path: 'prestationMarque',
+    component: PrestationsMarquesAddComponent
+  }
+];
+
+
+export const PagesBackOfficeProfilRoutes: Routes = [
+  {
+    path: '',
+    component: ListeProfilComponent
+  },
+  {
+    path: 'formProfil',
+    component: FormProfilComponent
+  }
+];
+
+export const PagesBackOfficePosteRoutes: Routes = [
+  {
+    path: '',
+    component: ListePosteComponent
+  },
+  {
+    path: 'formPoste',
+    component: FormPosteComponent
+  }
+];
+
