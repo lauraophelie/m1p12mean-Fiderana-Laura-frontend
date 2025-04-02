@@ -1,0 +1,23 @@
+<h2 mat-dialog-title>Réponse à la notification de perte</h2>
+
+<mat-divider> </mat-divider>
+
+<mat-dialog-content class="mat-typography">
+  <form (ngSubmit)="refusPertePiece()" #refusPerteForm="ngForm">
+    <div class="row">
+      <mat-label class="f-w-600 m-b-8 d-block">Motif du refus</mat-label>
+      <mat-form-field appearance="outline" class="w-100" color="primary">
+        <textarea name="motifRefus" id="motifRefus" matInput [(ngModel)]="newReponsePerte.motifRefus" required></textarea>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-3">
+        <button mat-flat-button class="m-r-8" color="primary" type="submit" [disabled]="refusPerteForm.invalid" [mat-dialog-close]="true"> Valider </button>
+      </div>
+      <div class="col-lg-2">
+        <button mat-stroked-button [mat-dialog-close]="true"> Annuler </button>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>

@@ -67,14 +67,14 @@
               </button>
 
               <mat-menu #menu="matMenu">
-                <button mat-menu-item color="primary">
+                <button mat-menu-item color="primary" (click)="validationRetourPiece(element._id)">
                   <mat-icon>check</mat-icon>
-                  <span>Valider la retour</span>
+                  <span>Valider le retour</span>
                 </button>
 
-                <button mat-menu-item>
+                <button mat-menu-item (click)="refusRetourPiece(element._id)">
                   <mat-icon>delete</mat-icon>
-                  <span>Refuser la retour</span>
+                  <span>Refuser le retour</span>
                 </button>
               </mat-menu>
             </td>

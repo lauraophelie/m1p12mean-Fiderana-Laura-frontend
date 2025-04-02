@@ -29,8 +29,8 @@ export class InsertDemandePiecesComponent implements OnInit {
   };
 
   private _snackBar = inject(MatSnackBar);
-  openSnackBar(message: string) {
-    this._snackBar.open(message);
+  openSnackBar(message: string, action: string | 'Fermer') {
+    this._snackBar.open(message, action);
   }
 
   constructor(
@@ -78,19 +78,13 @@ export class InsertDemandePiecesComponent implements OnInit {
   insertDemandePiece(): void {
     if(this.checkDemandePiece()) {
       this.demandePieceService.addDemandePiece(this.newDemandePiece).subscribe((response: any) => {
-        if(response.message) {
-          this.openSnackBar(response.message);
-        } else {
           this.newDemandePiece = {
             dateDemande: '',
             motifDemande: '',
             mecanicienId: this.idMecanicien,
             details: []
-          }
-        }
+          };
       });
-    } else {
-      this.openSnackBar("Veuillez remplir correctement le formulaire");
     }
   }
 
