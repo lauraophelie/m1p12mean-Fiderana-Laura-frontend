@@ -10,6 +10,7 @@ import { FormProfilComponent } from "./back-office/profil/form-profil/form-profi
 import { FormPosteComponent } from "./back-office/poste/form-poste/form-poste.component";
 import { ListeProfilComponent } from "./back-office/profil/liste-profil/liste-profil.component";
 import { ListePosteComponent } from "./back-office/poste/liste-poste/liste-poste.component";
+
 export const PagesBackOfficeRoutes: Routes = [
   {
     path: '',

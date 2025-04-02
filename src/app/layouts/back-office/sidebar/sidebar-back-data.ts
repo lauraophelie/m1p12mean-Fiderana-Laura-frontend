@@ -43,8 +43,13 @@ export const navItems: NavItem[] = [
     route: '/back/prestation/prestationMarque'
   },
   {
+    displayName: 'Ajout de pièce',
+    iconName: 'solar:archive-minimalistic-line-duotone',
+    route: '/back/piece'
+  },
+  {
     displayName: 'Profil',
-    iconName: 'solar:lock-keyhole-minimalistic-line-duotone',
+    iconName: 'solar:archive-minimalistic-line-duotone',
     route: '/authentication',
     children: [
       {
@@ -64,7 +69,7 @@ export const navItems: NavItem[] = [
 
   {
     displayName: 'Poste',
-    iconName: 'solar:lock-keyhole-minimalistic-line-duotone',
+    iconName: 'solar:archive-minimalistic-line-duotone',
     route: '/authentication',
     children: [
       {
@@ -84,7 +89,7 @@ export const navItems: NavItem[] = [
 
   {
     displayName: "Poste de l'employé ",
-    iconName: 'solar:lock-keyhole-minimalistic-line-duotone',
+    iconName: 'solar:archive-minimalistic-line-duotone',
     route: '/authentication',
     children: [
       {
@@ -101,4 +106,36 @@ export const navItems: NavItem[] = [
       }
     ],
   },
+  {
+    navCap: 'Gestion de stocks',
+    divider: true
+  },
+  {
+    displayName: 'Etat de stocks',
+    iconName: 'solar:checklist-minimalistic-broken',
+    route: '/back/piece/stocks/etat'
+  },
+  {
+    displayName: 'Demande(s) de pièces',
+    iconName: 'solar:folder-2-outline',
+    route: '/back/piece/demandes'
+  },
+  {
+    displayName: 'Retour(s) de pièces',
+    iconName: 'solar:folder-2-outline',
+    route: '/back/piece/retours'
+  },
+  {
+    displayName: 'Perte(s) de pièces',
+    iconName: 'solar:folder-2-outline',
+    route: '/back/piece/pertes'
+  },
+  {
+    navCap: 'Employés',
+    divider: true
+  },
+  {
+    displayName: 'Liste des employés',
+    iconName: 'solar:users-group-rounded-bold'
+  }
 ];
