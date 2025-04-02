@@ -1,8 +1,8 @@
-<div class="blank-layout-container justify-content-center align-items-center bg-light">
+<div class="blank-layout-container justify-content-center align-items-center bg-light ">
     <div class="position-relative row w-100 h-100 bg-gredient justify-content-center">
-      <div class="col-lg-4 d-flex align-items-center">
+      <div class="col-lg-4 d-flex align-items-center ">
         <mat-card class="cardWithShadow boxed-auth">
-          <mat-card-content class="p-32">
+          <mat-card-content class="p-32 loginMeca">
             <div class="text-center">
               <a [routerLink]="['/dashboard']">
                 <img src="./assets/images/logos/logo.svg" class="align-middle m-2" alt="logo" />
@@ -10,15 +10,15 @@
             </div>
   
 
-            <form class="m-t-30">
+            <form class="m-t-30 "  (ngSubmit)="submit()" #authForm="ngForm">
               <mat-label class="f-s-14 f-w-600 m-b-12 d-block">Email</mat-label>
               <mat-form-field appearance="outline" class="w-100" color="primary">
-                <input matInput />
+                <input matInput placeholder="Entrez votre Email"  name="mail" [(ngModel)]="newAuth.mail"/>
               </mat-form-field>
               <!-- password -->
               <mat-label class="f-s-14 f-w-600 m-b-12 d-block">Mot de passe</mat-label>
               <mat-form-field appearance="outline" class="w-100" color="primary">
-                <input matInput type="password" />
+                <input matInput type="password" placeholder="Entrez votre mot de passe"  name="mdp" [(ngModel)]="newAuth.mdp"/>
               </mat-form-field>
   
               <div class="d-flex align-items-center m-b-12">
@@ -26,11 +26,13 @@
                 <a [routerLink]="['/']" class="text-primary f-w-600 text-decoration-none m-l-auto f-s-14">Changer le mot de passe
                   ?</a>
               </div>
-              <a [routerLink]="['/']" mat-flat-button color="primary" class="w-100">
+            <div *ngIf="errorMessage" class="error-message erreurAuth">{{ errorMessage }}</div>
+              <button mat-flat-button color="primary" class="w-100" type="submit" [disabled]="authForm.invalid">
                 S'authentifier
-              </a>
+              </button>
               <!-- input -->
             </form>
+            
             <span class="d-block f-w-500 text-center m-t-24">Vous êtes nouveau?
               <a [routerLink]="['/authentication/register']" class="text-decoration-none text-primary f-w-500 f-s-14">
                 Inscrivez-vous</a>

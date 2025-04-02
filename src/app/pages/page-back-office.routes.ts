@@ -144,3 +144,13 @@ export const PagesBackOfficePosteRoutes: Routes = [
   }
 ];
 
+export const PagesBackOfficeEmployesRoutes: Routes = [
+  {
+    path: '',
+    component: ListePosteComponent
+  },
+  {
+    path: 'ajoutEmploye',
+    component: AjoutEmployeComponent
+  }
+];
