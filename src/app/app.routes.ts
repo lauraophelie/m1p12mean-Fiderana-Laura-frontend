@@ -3,6 +3,7 @@ import { BlankComponent } from './layouts/blank/blank.component';
 import { FullComponent } from './layouts/full/full.component';
 import { BackOfficeComponent } from './layouts/back-office/back-office.component';
 import { FrontOfficeComponent } from './layouts/front-office/front-office.component';
+import { MecanicienBackOfficeComponent } from './layouts/back-office/mecanicien/mecanicien-back-office/mecanicien-back-office.component';
 
 export const routes: Routes = [
     {
@@ -49,6 +50,17 @@ export const routes: Routes = [
           path: 'piece',
           loadChildren:
             () => import('./pages/page-back-office.routes').then((m) => m.PagesBackOfficePiecesRoutes)
+        }
+      ]
+    },
+    {
+      path: 'meca',
+      component: MecanicienBackOfficeComponent,
+      children: [
+        {
+          path: 'piece',
+          loadChildren:
+            () => import('./pages/page-mecanicien-back-office.route').then((m) => m.PagesMecanicienBackOfficeRoutes)
         }
       ]
     },

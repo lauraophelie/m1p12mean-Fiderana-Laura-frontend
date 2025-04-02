@@ -24,13 +24,17 @@
                     <textarea name="motifDemande" id="motifDemande" matInput [(ngModel)]="newDemandePiece.motifDemande" required></textarea>
                   </mat-form-field>
                 </div>
+
+                <div class="col-lg-12">
+                  <button mat-flat-button color="primary" matStepperNext>Suivant</button>
+                </div>
               </div>
             </mat-step>
 
             <mat-step>
               <ng-template matStepLabel> Détails de la demande </ng-template>
               <div class="row">
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                   <mat-label class="f-w-600 m-b-8 d-block">Pièce</mat-label>
                   <mat-form-field appearance="outline" class="w-100" color="primary">
                     <mat-select placeholder="Choisir parmi la liste" name="newPieceId" id="newPieceId" [(ngModel)]="newPieceId" required>
@@ -42,22 +46,20 @@
                     </mat-select>
                   </mat-form-field>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                   <mat-label class="f-w-600 m-b-8 d-block">Quantité demandée</mat-label>
                   <mat-form-field appearance="outline" class="w-100" color="primary">
                     <input type="number" name="newQuantite" id="newQuantie" matInput min="1" placeholder="Entrez une valeur" [(ngModel)]="newQuantite" required />
                   </mat-form-field>
                 </div>
-                <div class="col-lg-2">
-                  <button mat-flat-button color="primary" (click)="addToDetailsDemandePiece()"> Ajouter </button>
+                <div class="col-lg-2" style="padding-top: 35px">
+                  <button mat-flat-button color="secondar" (click)="addToDetailsDemandePiece()" class="bg-light-secondar"> Ajouter </button>
                 </div>
               </div>
 
               <div class="row" *ngIf="newDemandePiece.details.length > 0">
                 <div class="col-lg-12">
-                  <mat-card class="shadow-none m-t-12">
-                    <mat-card-content>
-                      <table>
+                    <table>
                         <tr *ngFor="let element of newDemandePiece.details; let i = index">
                           <td> {{ element.nomPiece }} </td>
                           <td> {{ element.quantite }} </td>
@@ -67,10 +69,12 @@
                             </button>
                           </td>
                         </tr>
-                      </table>
-                    </mat-card-content>
-                  </mat-card>
+                    </table>
                 </div>
+              </div>
+              <div class="m-t-12">
+                <button mat-flat-button color="secondar" matStepperPrevious>Précédent</button>
+                <button mat-flat-button color="primary" matStepperNext>Suivant</button>
               </div>
             </mat-step>
 
@@ -104,6 +108,7 @@
                     </mat-list>
 
                     <div class="m-t-12">
+                      <button mat-flat-button color="secondar"  matStepperPrevious>Précédent</button>
                       <button mat-flat-button class="m-r-8" color="primary" type="submit" [disabled]="demandePieceForm.invalid"> Valider </button>
                     </div>
                   </mat-card-content>
