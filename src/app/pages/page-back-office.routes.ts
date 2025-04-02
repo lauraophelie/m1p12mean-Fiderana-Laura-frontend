@@ -17,6 +17,7 @@ import { RetourPiecesListeComponent } from './back-office/retour-pieces-liste/re
 import { PertePiecesListeComponent } from './back-office/perte-pieces-liste/perte-pieces-liste.component';
 import { DemandePiecesListeComponent } from './back-office/demande-pieces-liste/demande-pieces-liste.component';
 
+
 export const PagesBackOfficeRoutes: Routes = [
   {
     path: '',
