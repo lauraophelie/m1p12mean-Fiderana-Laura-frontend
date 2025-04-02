@@ -25,7 +25,7 @@ export class LoginManagerComponent {
       next: (response) => {
       alert(response)
         sessionStorage.setItem('token', response.accessToken);
-        this.router.navigate(['/dashboard']); 
+        this.router.navigate(['//back/service/liste']); 
       },
       error: (err) => {
         console.error('Échec de la connexion:', err);
