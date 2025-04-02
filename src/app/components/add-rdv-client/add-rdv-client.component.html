@@ -28,7 +28,7 @@
             <mat-select name="voitureId" id="voitureId" [(ngModel)]="newRdv.voitureId" placeholder="Choisir un véhicules parmi la liste" required>
               @for(option of listeVoituresClient; track option) {
                 <mat-option [value]="option._id">
-                  {{ option }}
+                  {{ option.immatriculation + ' - ' + option.marqueId.designationMarque + ' ' + option.modeleId.designationModele }}
                 </mat-option>
               }
             </mat-select>

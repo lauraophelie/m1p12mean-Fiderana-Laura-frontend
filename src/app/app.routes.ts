@@ -49,12 +49,12 @@ export const routes: Routes = [
         {
           path: 'profil',
           loadChildren:
-            () => import('./pages/page-back-offiche.routes').then((m) => m.PagesBackOfficeProfilRoutes)
+            () => import('./pages/page-back-office.routes').then((m) => m.PagesBackOfficeProfilRoutes)
         },
         {
           path: 'poste',
           loadChildren:
-            () => import('./pages/page-back-offiche.routes').then((m) => m.PagesBackOfficePosteRoutes)
+            () => import('./pages/page-back-office.routes').then((m) => m.PagesBackOfficePosteRoutes)
         },
         {
           path: 'piece',
