@@ -34,7 +34,7 @@ export class RetourPiecesService {
   }
 
   getDetailsRetour(retourId: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/${retourId}`);
+    return this.http.get(`${this.apiUrl}/details/${retourId}`);
   }
 
   getRetoursPieces(page: string | number, limit: string | number): Observable<any> {

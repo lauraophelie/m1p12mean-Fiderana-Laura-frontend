@@ -26,7 +26,11 @@
           <mat-label class="f-w-600 m-b-8 d-block">Voiture concernée</mat-label>
           <mat-form-field appearance="outline" class="w-100" color="primary">
             <mat-select name="voitureId" id="voitureId" [(ngModel)]="newRdv.voitureId" placeholder="Choisir un véhicules parmi la liste" required>
-
+              @for(option of listeVoituresClient; track option) {
+                <mat-option [value]="option._id">
+                  {{ option }}
+                </mat-option>
+              }
             </mat-select>
           </mat-form-field>
         </div>

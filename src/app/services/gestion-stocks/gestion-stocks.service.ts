@@ -12,10 +12,17 @@ export interface StockVirtuelMecanicien {
   _id?: string;
   dateStock?: string;
   pieceId: string;
-  quantiteEntree?: number | 0;
-  quantiteSortie?: number | 0;
+  quantiteEntree: number | 0;
+  quantiteSortie: number | 0;
   mecanicienId: string;
   motif?: string;
+}
+
+export interface StockMecanicien {
+  pieceId: any;
+  quantiteEntree: number | string;
+  quantiteSortie: number | string;
+  quantiteRestante: number | string;
 }
 
 @Injectable({

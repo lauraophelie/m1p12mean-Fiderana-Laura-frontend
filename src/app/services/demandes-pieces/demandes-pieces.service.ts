@@ -3,12 +3,22 @@ import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+export interface DetailsDemandePiece {
+  _id?: string;
+  demandeId: string | '';
+  pieceId: string;
+  quantite: number;
+  status?: number | string;
+  nomPiece?: string;
+}
+
 export interface DemandePiece {
   _id?: string;
   dateDemande?: string;
   motifDemande: string;
   mecanicienId: string;
   status?: number | string;
+  details: DetailsDemandePiece[];
 }
 
 @Injectable({
@@ -32,15 +42,15 @@ export class DemandesPiecesService {
   }
 
   updateDemandeId(demandeId: string, demande: DemandePiece): Observable<any> {
-    return this.http.put(`${this.apiUrl}/${demandeId}`, demande);
+    return this.http.put(`${this.apiUrl}/modif/${demandeId}`, demande);
   }
 
   getInfosDemandePiece(demandeId: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/${demandeId}`);
+    return this.http.get(`${this.apiUrl}/details/${demandeId}`);
   }
 
   getDemandePieceMecanicien(mecanicienId: string, page: string | number, limit: string | number): Observable<any> {
-    return this.http.get(`${this.apiUrl}/${mecanicienId}?page=${page}&limit=${limit}`);
+    return this.http.get(`${this.apiUrl}/meca/${mecanicienId}?page=${page}&limit=${limit}`);
   }
 
   getDemandePieces(page: string | number, limit: string | number): Observable<any> {

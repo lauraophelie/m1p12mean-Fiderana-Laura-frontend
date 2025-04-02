@@ -1,0 +1,59 @@
+<div class="row">
+  <div class="col-lg-12">
+    <mat-card class="cardWithShadow theme-card">
+      <mat-card-header>
+        <mat-card-title class="m-b-0">Retour de pièce</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content class="b-t-1">
+        <form (ngSubmit)="addRetourPiece()" #retourPieceForm="ngForm">
+          <div class="row">
+            <div class="col-lg-12">
+              <mat-label class="f-w-600 m-b-8 d-block">Date de retour</mat-label>
+              <mat-form-field appearance="outline" class="w-100" color="primary">
+                <input type="date" name="dateRetour" id="dateRetour" matInput [(ngModel)]="newRetourPiece.dateRetour">
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12">
+              <mat-label class="f-w-600 m-b-8 d-block">Pièce</mat-label>
+              <mat-form-field appearance="outline" class="w-100" color="primary">
+                <mat-select placeholder="Choisir parmi la liste" name="pieceId" id="pieceId" [(ngModel)]="newRetourPiece.pieceId" required>
+                  @for(option of listePieces; track option) {
+                    <mat-option [value]="option._id">
+                      {{ option.nomPiece + ' (' + option.reference + ')' }}
+                    </mat-option>
+                  }
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12">
+              <mat-label class="f-w-600 m-b-8 d-block">Quantité retour</mat-label>
+              <mat-form-field appearance="outline" class="w-100" color="primary">
+                <input placeholder="Entre une valeur ici" type="number" name="quantiteRetour" id="quantiteRetour" min="1" matInput [(ngModel)]="newRetourPiece.quantiteRetour" required>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12">
+              <mat-label class="f-w-600 m-b-8 d-block">Motif du retour</mat-label>
+              <mat-form-field appearance="outline" class="w-100" color="primary">
+                <textarea name="motifRetour" id="motifRetour" matInput [(ngModel)]="newRetourPiece.motifRetour"></textarea>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="m-t-12">
+            <button mat-flat-button class="m-r-8" color="primary" type="submit" [disabled]="retourPieceForm.invalid"> Valider </button>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

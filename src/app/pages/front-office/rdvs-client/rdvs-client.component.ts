@@ -4,7 +4,6 @@ import { RendezVousService } from '../../../services/rendez-vous/rendez-vous.ser
 import { Router } from '@angular/router';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
-import { ServiceGarage } from '../../../services/services-garage/services-garage.service';
 import { variableTest } from '../../../../variables-test/variable';
 import { CommonModule } from '@angular/common';
 import { BadgeStatusComponent } from '../../../components/badge-status/badge-status.component';
@@ -36,7 +35,7 @@ export class RdvsClientComponent implements OnInit, AfterViewInit {
   ) {}
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatTable) table!: MatTable<ServiceGarage>;
+  @ViewChild(MatTable) table!: MatTable<any>;
 
   ngOnInit(): void {
     this.loadRdvClients();

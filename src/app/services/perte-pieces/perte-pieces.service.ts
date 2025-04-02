@@ -41,7 +41,7 @@ export class PertePiecesService {
   }
 
   getDetailsPertePiece(perteId: string) {
-    return this.http.get(`${this.apiUrl}/${perteId}`);
+    return this.http.get(`${this.apiUrl}/details/${perteId}`);
   }
 
   getPertesPieces(page: number | string, limit: number | string): Observable<any> {

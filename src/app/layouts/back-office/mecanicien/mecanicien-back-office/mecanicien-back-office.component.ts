@@ -1,24 +1,23 @@
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
-import { NavItemComponent } from './sidebar/nav-item/nav-item.component';
-import { MaterialModule } from '../../material.module';
+import { NavItemComponent } from '../../sidebar/nav-item/nav-item.component';
+import { MaterialModule } from '../../../../material.module';
 import { CommonModule } from '@angular/common';
-import { SidebarComponent } from './sidebar/sidebar.component';
+import { SidebarComponent } from '../../sidebar/sidebar.component';
 import { NgScrollbarModule } from 'ngx-scrollbar';
 import { TablerIconsModule } from 'angular-tabler-icons';
-import { HeaderComponent } from './header/header.component';
+import { HeaderComponent } from '../../header/header.component';
+import { navItems } from '../../sidebar/sidebar-mecanicien-back-data';
 import { MatSidenav, MatSidenavContent } from '@angular/material/sidenav';
-import { Subscription } from 'rxjs';
-import { CoreService } from '../../services/core.service';
+import { filter, Subscription } from 'rxjs';
+import { CoreService } from '../../../../services/core.service';
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { filter } from 'rxjs/operators';
-import { navItems } from './sidebar/sidebar-back-data';
 
 const MOBILE_VIEW = 'screen and (max-width: 768px)';
 const TABLET_VIEW = 'screen and (min-width: 769px) and (max-width: 1024px)';
 
 @Component({
-  selector: 'app-back-office',
+  selector: 'app-mecanicien-back-office',
   standalone: true,
   imports: [
     RouterModule,
@@ -30,11 +29,11 @@ const TABLET_VIEW = 'screen and (min-width: 769px) and (max-width: 1024px)';
     TablerIconsModule,
     HeaderComponent
   ],
-  templateUrl: './back-office.component.html',
-  styleUrl: './back-office.component.scss',
+  templateUrl: './mecanicien-back-office.component.html',
+  styleUrl: './mecanicien-back-office.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class BackOfficeComponent implements OnInit {
+export class MecanicienBackOfficeComponent implements OnInit {
   navItems = navItems;
 
   @ViewChild('leftsidenav')
@@ -51,7 +50,7 @@ export class BackOfficeComponent implements OnInit {
   private readonly htmlElement!: HTMLHtmlElement;
 
   get isOver(): boolean {
-      return this.isMobileScreen;
+    return this.isMobileScreen;
   }
 
   constructor(
@@ -76,9 +75,11 @@ export class BackOfficeComponent implements OnInit {
           this.content.scrollTo({ top: 0 });
         });
   }
+
   ngOnInit(): void {}
+
   ngOnDestroy() {
-      this.layoutChangesSubscription.unsubscribe();
+    this.layoutChangesSubscription.unsubscribe();
   }
   toggleCollapsed() {
     this.isContentWidthFixed = false;
@@ -88,9 +89,11 @@ export class BackOfficeComponent implements OnInit {
   resetCollapsedState(timer = 400) {
     setTimeout(() => this.settings.setOptions(this.options), timer);
   }
+
   onSidenavClosedStart() {
     this.isContentWidthFixed = false;
   }
+
   onSidenavOpenedChange(isOpened: boolean) {
     this.isCollapsedWidthFixed = !this.isOver;
     this.options.sidenavOpened = isOpened;
