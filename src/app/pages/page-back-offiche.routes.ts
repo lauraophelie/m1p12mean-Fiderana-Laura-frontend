@@ -9,7 +9,14 @@ import { PrestationsMarquesAddComponent } from "../components/prestations-marque
 import { FormProfilComponent } from "./back-office/profil/form-profil/form-profil.component";
 import { FormPosteComponent } from "./back-office/poste/form-poste/form-poste.component";
 import { ListeProfilComponent } from "./back-office/profil/liste-profil/liste-profil.component";
-import { ListePosteComponent } from "./back-office/poste/liste-poste/liste-poste.component";
+import { ListePosteComponent } from "./back-office/poste/liste-poste/liste-poste.component";import { PrestationsListeComponent } from "./back-office/prestations-liste/prestations-liste.component";
+import { PrestationsDetailsComponent } from "./back-office/prestations-details/prestations-details.component";
+import { EtatStocksComponent } from './back-office/etat-stocks/etat-stocks.component';
+import { RetourPiecesListeComponent } from './back-office/retour-pieces-liste/retour-pieces-liste.component';
+import { PertePiecesListeComponent } from './back-office/perte-pieces-liste/perte-pieces-liste.component';
+import { DemandePiecesListeComponent } from './back-office/demande-pieces-liste/demande-pieces-liste.component';
+import { AjoutEmployeComponent } from './authentication/ajout-employe/ajout-employe.component';
+
 
 export const PagesBackOfficeRoutes: Routes = [
   {
@@ -106,3 +113,13 @@ export const PagesBackOfficePosteRoutes: Routes = [
   }
 ];
 
+export const PagesBackOfficeEmployesRoutes: Routes = [
+  {
+    path: '',
+    component: ListePosteComponent
+  },
+  {
+    path: 'ajoutEmploye',
+    component: AjoutEmployeComponent
+  }
+];

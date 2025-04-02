@@ -1,68 +1,56 @@
-<div class="blank-layout-container justify-content-center align-items-center bg-light">
-  <div class="position-relative row w-100 h-100 bg-gredient justify-content-center">
-    <div class="col-lg-4 d-flex align-items-center">
-        <mat-card class="cardWithShadow theme-card">
-    <mat-card-header>
-      <div class="text-center logo">
-          <img src="./assets/images/logos/logo.svg" class="align-middle m-2" alt="logo" />
-      </div>
-      
-    </mat-card-header>
-    <mat-card-content class="b-t-1">
-      
-        <div class="col-6 titreInscription">
-          <h3 class="">Entrer l'employé</h3>
-        </div>
-
-
-      <form class="formInscriEmp">
+<mat-card class="cardWithShadow theme-card contenantFormEmp">
+  <mat-card-header>
+    <mat-card-title class="m-b-0">Insertion d'employé</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="b-t-1">
+      <form class="formInscriEmp"  (ngSubmit)="addEmploye()" #empForm="ngForm">
         <div class="row">
           <div class="col-lg-6">
             <mat-label class="f-w-600 m-b-8 d-block">Nom de l'employé</mat-label>
             <mat-form-field appearance="outline" class="w-100" color="primary">
-              <input matInput placeholder="Nom de l'employé " />
+              <input matInput placeholder="Nom de l'employé " name="nomEmploye" [(ngModel)]="newEmploye.nomEmploye"/>
             </mat-form-field>
           </div>
 
           <div class="col-lg-6">
             <mat-label class="f-w-600 m-b-8 d-block">Prénom de l'employé</mat-label>
             <mat-form-field appearance="outline" class="w-100" color="primary">
-              <input matInput placeholder="Prénom de l'employé " />
+              <input matInput placeholder="Prénom de l'employé " name="prenom" [(ngModel)]="newEmploye.prenom"/>
             </mat-form-field>
           </div>
 
           <div class="col-lg-6">
             <mat-label class="f-w-600 m-b-8 d-block">Matricule</mat-label>
             <mat-form-field appearance="outline" class="w-100" color="primary">
-              <input matInput placeholder="Matricule " />
+              <input matInput placeholder="Matricule " name="matricule" [(ngModel)]="newEmploye.matricule"/>
             </mat-form-field>
           </div>
 
           <div class="col-lg-6">
             <mat-label class="f-w-600 m-b-8 d-block">Adresse</mat-label>
             <mat-form-field appearance="outline" class="w-100" color="primary">
-              <input matInput placeholder="Adresse " />
+              <input matInput placeholder="Adresse " name="adresse" [(ngModel)]="newEmploye.adresse"/>
             </mat-form-field>
           </div>
 
           <div class="col-lg-6">
             <mat-label class="f-w-600 m-b-8 d-block">Phone</mat-label>
             <mat-form-field appearance="outline" class="w-100" color="primary">
-              <input matInput placeholder="Phone " />
+              <input matInput placeholder="Phone " name="phone" [(ngModel)]="newEmploye.phone"/>
             </mat-form-field>
           </div>
 
           <div class="col-lg-6">
             <mat-label class="f-w-600 m-b-8 d-block">CIN</mat-label>
             <mat-form-field appearance="outline" class="w-100" color="primary">
-              <input matInput placeholder="CIN " />
+              <input matInput placeholder="CIN " [(ngModel)]="newEmploye.CIN" name="CIN" />
             </mat-form-field>
           </div>
 
           <div class="col-lg-6">
             <mat-label class="f-w-600 m-b-8 d-block">Sexe</mat-label>
             <mat-form-field appearance="outline" class="w-100">
-              <mat-select [(value)]="selectedsexe">
+              <mat-select [(ngModel)]="newEmploye.sexe" [(value)]="selectedsexe">
                 @for(option of sexe ; track option.value) {
                 <mat-option [value]="option.value">{{
                   option.viewValue
@@ -75,10 +63,10 @@
           <div class="col-lg-6">
             <mat-label class="f-w-600 m-b-8 d-block">Poste</mat-label>
             <mat-form-field appearance="outline" class="w-100">
-              <mat-select [(value)]="selectedCountry">
-                @for(option of country; track option.value) {
-                <mat-option [value]="option.value">{{
-                  option.viewValue
+              <mat-select placeholder="Choisir un poste parmi la liste" name="poste" [(ngModel)]="newEmploye.poste">
+                @for(option of postes; track option) {
+                <mat-option [value]="option._id">{{
+                  option.nomPoste
                   }}</mat-option>
                 }
               </mat-select>
@@ -88,7 +76,7 @@
           <div class="col-lg-6">
             <mat-label class="f-w-600 m-b-8 d-block">Date d'embauche</mat-label>
             <mat-form-field appearance="outline" class="w-100" color="primary">
-              <input matInput [matDatepicker]="picker" placeholder="Sélectionner une date" />
+              <input matInput [matDatepicker]="picker" placeholder="Sélectionner une date" [(ngModel)]="newEmploye.dateEmbauche" />
               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
@@ -97,7 +85,7 @@
           <div class="col-lg-6">
             <mat-label class="f-w-600 m-b-8 d-block">Email</mat-label>
             <mat-form-field appearance="outline" class="w-100" color="primary">
-              <input matInput type="email" placeholder="Email" formControlName="email" required />
+              <input matInput type="email" placeholder="Email" name="email"  [(ngModel)]="newEmploye.mail" required />
             
             </mat-form-field>
           </div>
@@ -105,11 +93,9 @@
         </div>
   
         <div class="m-t-12">
-          <button mat-flat-button color="primary" class="m-r-8">Ajouter</button>
+          <button mat-flat-button color="primary" type="submit" [disabled]="empForm.invalid" class="m-r-8">Ajouter</button>
         </div>
       </form>
     </mat-card-content>
-    </mat-card>
-    </div>
-  </div>
-</div>
+  </mat-card>
+

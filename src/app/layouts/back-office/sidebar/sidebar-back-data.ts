@@ -107,6 +107,11 @@ export const navItems: NavItem[] = [
     ],
   },
   {
+    displayName: "Ajout d'employé",
+    iconName: 'solar:archive-minimalistic-line-duotone',
+    route: '/back/employe/ajoutEmploye'
+  },
+  {
     navCap: 'Gestion de stocks',
     divider: true
   },

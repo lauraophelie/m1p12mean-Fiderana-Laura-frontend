@@ -37,6 +37,11 @@ export const routes: Routes = [
           path: 'piece',
           loadChildren:
             () => import('./pages/page-back-office.routes').then((m) => m.PagesBackOfficePiecesRoutes)
+        },
+        {
+          path: 'employe',
+          loadChildren:
+            () => import('./pages/page-back-office.routes').then((m) => m.PagesBackOfficeEmployesRoutes)
         }
       ]
     },
