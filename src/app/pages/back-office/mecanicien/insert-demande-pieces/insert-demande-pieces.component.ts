@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MaterialModule } from '../../../../material.module';
 import { PiecesService } from '../../../../services/pieces/pieces.service';
 import { DemandePiece, DemandesPiecesService, DetailsDemandePiece } from '../../../../services/demandes-pieces/demandes-pieces.service';
 import { variableTest } from '../../../../../variables-test/variable';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-insert-demande-pieces',
@@ -27,6 +28,11 @@ export class InsertDemandePiecesComponent implements OnInit {
     details: []
   };
 
+  private _snackBar = inject(MatSnackBar);
+  openSnackBar(message: string, action: string | 'Fermer') {
+    this._snackBar.open(message, action);
+  }
+
   constructor(
     private readonly pieceService: PiecesService,
     private readonly demandePieceService: DemandesPiecesService,
@@ -41,7 +47,7 @@ export class InsertDemandePiecesComponent implements OnInit {
   newQuantite: number = 0;
 
   addToDetailsDemandePiece(): void {
-    if(this.newPieceId && this.newQuantite !== null) {
+    if(this.newPieceId && this.newQuantite > 0) {
       const selectedPiece = this.listePieces.find(piece => piece._id === this.newPieceId);
       const element: DetailsDemandePiece = {
         demandeId: '',
@@ -72,19 +78,19 @@ export class InsertDemandePiecesComponent implements OnInit {
   insertDemandePiece(): void {
     if(this.checkDemandePiece()) {
       this.demandePieceService.addDemandePiece(this.newDemandePiece).subscribe((response: any) => {
-        this.newDemandePiece = {
-          dateDemande: '',
-          motifDemande: '',
-          mecanicienId: this.idMecanicien,
-          details: []
-        }
+          this.newDemandePiece = {
+            dateDemande: '',
+            motifDemande: '',
+            mecanicienId: this.idMecanicien,
+            details: []
+          };
       });
     }
   }
 
   checkDemandePiece(): boolean {
-    if(this.newDemandePiece.motifDemande && this.newDemandePiece.mecanicienId && this.newDemandePiece.details.length == 0) {
-      return false;
+    if(this.newDemandePiece.motifDemande && this.newDemandePiece.mecanicienId && this.newDemandePiece.details.length > 0) {
+      return true;
     }
     return false;
   }

@@ -7,6 +7,7 @@ import { ElementsVoitureService } from '../../services/voitures/elements-voiture
 import { MaterialModule } from '../../material.module';
 import { forkJoin } from 'rxjs';
 import { MarqueService } from '../../services/marques/marque.service';
+import { variableTest } from '../../../variables-test/variable';
 
 @Component({
   selector: 'app-infos-voitures-insert',
@@ -20,6 +21,7 @@ import { MarqueService } from '../../services/marques/marque.service';
   styleUrl: './infos-voitures-insert.component.scss'
 })
 export class InfosVoituresInsertComponent implements OnInit, OnDestroy {
+  clientId: string = `${variableTest.client}`;
   newInfosVoiture: Voiture = {
     immatriculation: '',
     marqueId: '',
@@ -27,7 +29,7 @@ export class InfosVoituresInsertComponent implements OnInit, OnDestroy {
     categorieVoitureId: '',
     typeEnergieId: '',
     boiteVitesseId: '',
-    clientId: '',
+    clientId: this.clientId,
     anneeFabrication: '',
     remarques: '',
     images: []
@@ -107,6 +109,7 @@ export class InfosVoituresInsertComponent implements OnInit, OnDestroy {
       formData.append('categorieVoitureId', this.newInfosVoiture.categorieVoitureId);
       formData.append('typeEnergieId', this.newInfosVoiture.typeEnergieId);
       formData.append('boiteVitesseId', this.newInfosVoiture.boiteVitesseId);
+      formData.append('clientId', this.clientId);
 
       if(this.newInfosVoiture.anneeFabrication) {
         formData.append('anneeFabrication', this.newInfosVoiture.anneeFabrication);
@@ -121,6 +124,7 @@ export class InfosVoituresInsertComponent implements OnInit, OnDestroy {
       }
       this.voitureService.insertInfosVoiture(formData).subscribe(() => {
         this.initNewInfosVoiture();
+        window.location.reload();
       });
     }
   }
@@ -148,7 +152,7 @@ export class InfosVoituresInsertComponent implements OnInit, OnDestroy {
       categorieVoitureId: '',
       typeEnergieId: '',
       boiteVitesseId: '',
-      clientId: '',
+      clientId: this.clientId,
       anneeFabrication: '',
       images: [],
       remarques: ''

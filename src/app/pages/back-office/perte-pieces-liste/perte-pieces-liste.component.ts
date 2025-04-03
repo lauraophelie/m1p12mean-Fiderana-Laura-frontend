@@ -1,10 +1,12 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, inject, OnInit, ViewChild } from '@angular/core';
 import { NotificationPerte, PertePiecesService } from '../../../services/perte-pieces/perte-pieces.service';
 import { MaterialModule } from '../../../material.module';
 import { CommonModule } from '@angular/common';
 import { BadgeStatusComponent } from '../../../components/badge-status/badge-status.component';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatDialog } from '@angular/material/dialog';
+import { ReponsePerteDialogComponent } from './reponse-perte-dialog/reponse-perte-dialog.component';
 
 @Component({
   selector: 'app-perte-pieces-liste',
@@ -12,7 +14,8 @@ import { MatPaginator } from '@angular/material/paginator';
   imports: [
     MaterialModule,
     CommonModule,
-    BadgeStatusComponent
+    BadgeStatusComponent,
+    ReponsePerteDialogComponent
   ],
   templateUrl: './perte-pieces-liste.component.html',
   styleUrl: './perte-pieces-liste.component.scss'
@@ -48,6 +51,23 @@ export class PertePiecesListeComponent implements OnInit, AfterViewInit {
 
       this.paginator.length = this.totalItems;
       this.table.renderRows();
+    });
+  }
+
+  validationPertePiece(perteId: string): void {
+    this.pertePieceService.validationPerte(perteId).subscribe(() => {
+      window.location.reload();
+    });
+  }
+
+  selectedPerte: string | null = null;
+  readonly popup = inject(MatDialog);
+  envoiReponseRefus(perteId: string): void {
+    this.selectedPerte = perteId;
+    this.popup.open(ReponsePerteDialogComponent, {
+      data: {
+        perteId: this.selectedPerte
+      }
     });
   }
 }

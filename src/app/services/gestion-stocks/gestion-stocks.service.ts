@@ -41,6 +41,10 @@ export class GestionStocksService {
     return this.http.get(`${this.apiUrl}/stock/${mecanicienId}`);
   }
 
+  getListePieceMecanicien(mecanicienId: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/listePiece/${mecanicienId}`);
+  }
+
   sortieStockMecanicien(sortie: StockVirtuelMecanicien): Observable<any> {
     return this.http.post(`${this.apiUrl}/stock/sortie`, sortie);
   }

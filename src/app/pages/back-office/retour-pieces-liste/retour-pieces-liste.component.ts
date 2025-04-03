@@ -50,4 +50,15 @@ export class RetourPiecesListeComponent implements OnInit, AfterViewInit {
       this.table.renderRows();
     });
   }
+
+  validationRetourPiece(retourId: string): void {
+    this.retourPieceService.validationRetourPiece(retourId).subscribe(() => {
+      window.location.reload();
+    });
+  }
+  refusRetourPiece(retourId: string): void {
+    this.retourPieceService.refusRetourPiece(retourId).subscribe(() => {
+      window.location.reload();
+    });
+  }
 }

@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { variableTest } from '../../../../../variables-test/variable';
 import { NotificationPerte, PertePiecesService } from '../../../../services/perte-pieces/perte-pieces.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../../../../material.module';
+import { GestionStocksService } from '../../../../services/gestion-stocks/gestion-stocks.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-insert-perte-pieces',
@@ -27,8 +29,14 @@ export class InsertPertePiecesComponent implements OnInit {
   }
   listePieces: any[] = [];
 
+  private _snackBar = inject(MatSnackBar);
+  openSnackBar(message: string) {
+    this._snackBar.open(message);
+  }
+
   constructor(
-    private readonly reponsePerteService: PertePiecesService
+    private readonly reponsePerteService: PertePiecesService,
+    private readonly gestionStockService: GestionStocksService
   ) {}
 
   ngOnInit(): void {
@@ -38,14 +46,20 @@ export class InsertPertePiecesComponent implements OnInit {
   addNotifRetourPerte(): void {
     if(this.checkNotifPerteData()) {
       this.reponsePerteService.insertPertePiece(this.newNotifPerte).subscribe((response: any) => {
-        this.newNotifPerte = {
-          datePerte: '',
-          explicationPerte: '',
-          mecanicienId: this.idMecanicien,
-          pieceId: '',
-          quantitePerdue: ''
+        if(response.message) {
+          this.openSnackBar(response.message);
+        } else {
+          this.newNotifPerte = {
+            datePerte: '',
+            explicationPerte: '',
+            mecanicienId: this.idMecanicien,
+            pieceId: '',
+            quantitePerdue: ''
+          }
         }
       });
+    } else {
+      this.openSnackBar("Veuillez remplir correctement le formulaire");
     }
   }
 
@@ -57,6 +71,8 @@ export class InsertPertePiecesComponent implements OnInit {
   }
 
   loadListePiece(): void {
-
+    this.gestionStockService.getListePieceMecanicien(this.idMecanicien).subscribe((response: any) => {
+      this.listePieces = response.data;
+    });
   }
 }

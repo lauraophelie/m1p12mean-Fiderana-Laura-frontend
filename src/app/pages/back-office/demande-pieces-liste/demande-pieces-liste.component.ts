@@ -39,6 +39,19 @@ export class DemandePiecesListeComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
   }
+
+  validationDemandePiece(demandeId: string): void {
+    this.demandesPiecesService.validationDemandePiece(demandeId).subscribe((response: any) => {
+      window.location.reload();
+    });
+  }
+
+  refusDemandePiece(demandeId: string): void {
+    this.demandesPiecesService.refusDemandePiece(demandeId).subscribe((response: any) => {
+      window.location.reload();
+    });
+  }
+
   loadDemandePieces(): void {
     this.demandesPiecesService.getDemandePieces(this.currentPage, this.itemsPerPage).subscribe((response: any) => {
       this.listeDemandes = response.data;

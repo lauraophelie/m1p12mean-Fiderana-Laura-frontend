@@ -60,14 +60,14 @@
               </button>
 
               <mat-menu #menu="matMenu">
-                <button mat-menu-item color="primary">
+                <button mat-menu-item color="primary" (click)="validationPertePiece(element._id)">
                   <mat-icon>check</mat-icon>
-                  <span>Valider la demande</span>
+                  <span>Valider la perte</span>
                 </button>
 
-                <button mat-menu-item>
+                <button mat-menu-item (click)="envoiReponseRefus(element._id)">
                   <mat-icon>delete</mat-icon>
-                  <span>Refuser la demande</span>
+                  <span>Refuser la perte</span>
                 </button>
               </mat-menu>
             </td>
@@ -76,6 +76,8 @@
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
+
+        <app-reponse-perte-dialog *ngIf="selectedPerte"></app-reponse-perte-dialog>
 
         <mat-paginator [pageSizeOptions]="[5, 10, 25]" [length]="totalItems" [pageSize]="itemsPerPage" showFirstLastButtons>
         </mat-paginator>

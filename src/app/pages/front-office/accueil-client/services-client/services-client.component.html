@@ -1,3 +1,30 @@
-<div class="row">
-  <h1>Nos services</h1>
+<div class="row m-t-24">
+  <div class="col-lg-12">
+    <h1>Nos services</h1>
+  </div>
+</div>
+
+<div class="row justify-content-center m-t-24">
+  @for(element of listeServices; track element) {
+    <div class="col-lg-4">
+      <mat-card class="cardWithShadow position-relative overflow-hidden">
+        <mat-card-content class="p-y-24">
+          <mat-card-title class="m-t-20 text-hover-primary cursor-pointer">
+            {{ element.nomService }}
+          </mat-card-title>
+          <div class="d-flex m-b-20">
+            <span class="">
+              {{ element.descriptionService }}
+            </span>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  }
+</div>
+
+<div class="row justify-content-center m-t-24">
+  <button mat-stroked-button color="primary" class="f-w-600 m-t-8" (click)="goToListeServices()">
+    Voir tous nos services
+  </button>
 </div>
