@@ -13,54 +13,54 @@
         <div class="col-6 titreInscriptionClient">
             <h3 class="">Inscrivez-vous</h3>
         </div>
-  
-        <form class="formInscriClient">
+        
+        <form class="formInscriClient" (ngSubmit)="addClient()" #clientForm="ngForm">
           <div class="row">
             <div class="col-lg-6">
               <mat-label class="f-w-600 m-b-8 d-block">Nom</mat-label>
               <mat-form-field appearance="outline" class="w-100" color="primary">
-                <input matInput placeholder="Nom" />
+                <input matInput placeholder="Entrez votre nom " name="nomClient" [(ngModel)]="newClient.nomClient" />
               </mat-form-field>
             </div>
   
             <div class="col-lg-6">
               <mat-label class="f-w-600 m-b-8 d-block">Prénom</mat-label>
               <mat-form-field appearance="outline" class="w-100" color="primary">
-                <input matInput placeholder="Prénom" />
+                <input matInput placeholder="Entrez Votre Prénom " name="prenom" [(ngModel)]="newClient.prenom" />
               </mat-form-field>
             </div>
   
             <div class="col-lg-6">
               <mat-label class="f-w-600 m-b-8 d-block">Adresse</mat-label>
               <mat-form-field appearance="outline" class="w-100" color="primary">
-                <input matInput placeholder="Adresse " />
+                <input matInput placeholder="Votre adresse " name="adresse" [(ngModel)]="newClient.adresse" />
               </mat-form-field>
             </div>
   
             <div class="col-lg-6">
               <mat-label class="f-w-600 m-b-8 d-block">Phone</mat-label>
               <mat-form-field appearance="outline" class="w-100" color="primary">
-                <input matInput placeholder="Phone " />
+                <input matInput placeholder="Votre contact " name="phone" [(ngModel)]="newClient.phone" />
               </mat-form-field>
             </div>
   
             <div class="col-lg-6">
-                <mat-label class="f-w-600 m-b-8 d-block">Sexe</mat-label>
-                <mat-form-field appearance="outline" class="w-100">
-                  <mat-select [(value)]="selectedsexe">
-                    @for(option of sexe ; track option.value) {
-                    <mat-option [value]="option.value">{{
-                      option.viewValue
-                      }}</mat-option>
-                    }
-                  </mat-select>
-                </mat-form-field>
-              </div>
+              <mat-label class="f-w-600 m-b-8 d-block">Sexe</mat-label>
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-select name="sexe" [(ngModel)]="newClient.sexe" [(value)]="selectedsexe">
+                  @for(option of sexe ; track option.value) {
+                  <mat-option [value]="option.value">{{
+                    option.viewValue
+                    }}</mat-option>
+                  }
+                </mat-select>
+              </mat-form-field>
+            </div>
   
             <div class="col-lg-6">
               <mat-label class="f-w-600 m-b-8 d-block">Date de création</mat-label>
               <mat-form-field appearance="outline" class="w-100" color="primary">
-                <input matInput [matDatepicker]="picker" placeholder="Sélectionner une date" />
+                <input matInput [matDatepicker]="picker" name="dateCreationCompte" [(ngModel)]="newClient.dateCreationCompte" placeholder="Sélectionner une date" />
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>
@@ -69,7 +69,7 @@
             <div class="col-lg-6">
               <mat-label class="f-w-600 m-b-8 d-block">Email</mat-label>
               <mat-form-field appearance="outline" class="w-100" color="primary">
-                <input matInput type="email" placeholder="Email" formControlName="email" required />
+                <input matInput type="email"placeholder="Votre Email " name="mail" [(ngModel)]="newClient.mail" required />
               
               </mat-form-field>
             </div>
@@ -77,7 +77,7 @@
             <div class="col-lg-6">
                 <mat-label class="f-w-600 m-b-8 d-block">Mot de passe</mat-label>
                 <mat-form-field appearance="outline" class="w-100" color="primary">
-                  <input matInput  placeholder="Mot de passe"  required />
+                  <input matInput  placeholder="Votre mot de passe " name="mdp" [(ngModel)]="newClient.mdp" required />
                 
                 </mat-form-field>
             </div>
@@ -86,7 +86,7 @@
           </div>
     
           <div class="m-t-12">
-            <button mat-flat-button color="primary" class="m-r-8">Ajouter</button>
+            <button mat-flat-button color="primary" type="submit" [disabled]="clientForm.invalid" class="m-r-8">Ajouter</button>
           </div>
         </form>
       </mat-card-content>

@@ -16,6 +16,7 @@ import { EtatStocksComponent } from './back-office/etat-stocks/etat-stocks.compo
 import { RetourPiecesListeComponent } from './back-office/retour-pieces-liste/retour-pieces-liste.component';
 import { PertePiecesListeComponent } from './back-office/perte-pieces-liste/perte-pieces-liste.component';
 import { DemandePiecesListeComponent } from './back-office/demande-pieces-liste/demande-pieces-liste.component';
+import { AjoutEmployeComponent } from './authentication/ajout-employe/ajout-employe.component';
 
 
 export const PagesBackOfficeRoutes: Routes = [
