@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, inject, OnInit, ViewChild } from '@angular/core';
 import { MaterialModule } from '../../../material.module';
 import { RendezVousService } from '../../../services/rendez-vous/rendez-vous.service';
 import { Router } from '@angular/router';
@@ -7,6 +7,8 @@ import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { variableTest } from '../../../../variables-test/variable';
 import { CommonModule } from '@angular/common';
 import { BadgeStatusComponent } from '../../../components/badge-status/badge-status.component';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmAnnulationRdvComponent } from './confirm-annulation-rdv/confirm-annulation-rdv.component';
 
 @Component({
   selector: 'app-rdvs-client',
@@ -14,7 +16,8 @@ import { BadgeStatusComponent } from '../../../components/badge-status/badge-sta
   imports: [
     MaterialModule,
     CommonModule,
-    BadgeStatusComponent
+    BadgeStatusComponent,
+    ConfirmAnnulationRdvComponent
   ],
   templateUrl: './rdvs-client.component.html',
   styleUrl: './rdvs-client.component.scss'
@@ -53,6 +56,18 @@ export class RdvsClientComponent implements OnInit, AfterViewInit {
       this.paginator.length = this.totalItems;
       this.table.renderRows();
     });
+  }
+
+  selectedRdv: string | null = null;
+  readonly popup = inject(MatDialog);
+
+  confirmationAnnulation(rdvId: string): void {
+    this.selectedRdv = rdvId;
+    this.popup.open(ConfirmAnnulationRdvComponent, {
+      data: {
+        rdvId: this.selectedRdv
+      }
+    })
   }
 
   goToAddPage(): void {

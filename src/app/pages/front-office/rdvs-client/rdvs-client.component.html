@@ -69,7 +69,7 @@
                   <span>Modifier</span>
                 </button>
 
-                <button mat-menu-item>
+                <button mat-menu-item (click)="confirmationAnnulation(element._id)">
                   <mat-icon>delete</mat-icon>
                   <span>Annuler</span>
                 </button>
@@ -80,6 +80,8 @@
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
+
+        <app-confirm-annulation-rdv *ngIf="selectedRdv"> </app-confirm-annulation-rdv>
 
         <mat-paginator [pageSizeOptions]="[5, 10, 25]" [length]="totalItems" [pageSize]="itemsPerPage" showFirstLastButtons>
         </mat-paginator>
