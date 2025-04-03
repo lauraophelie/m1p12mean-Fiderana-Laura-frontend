@@ -8,11 +8,13 @@ import { MatPaginator } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { ModifPrestationsComponent } from '../../../components/modif-prestations/modif-prestations.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-prestations-liste',
   standalone: true,
   imports: [
+    CommonModule,
     MaterialModule,
     TablerIconsModule,
     MatTooltipModule,
